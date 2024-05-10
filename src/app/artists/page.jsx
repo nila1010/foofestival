@@ -77,13 +77,13 @@ export default function page() {
                 {/* <Image src={`/${oneArtist.logo}`} height={100} width={100} alt="logo of the artist" /> */}
               </CardContent>
               <CardFooter>
-                {oneArtist.members.map((oneMember) => {
+                {/*  {oneArtist.members.map((oneMember) => {
                   return (
                     <p className="inline max-w-fit mr-2" key={oneMember}>
                       {oneMember},
                     </p>
                   );
-                })}
+                })} */}
                 <Link prefetch={false} href={oneArtist.slug} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
                   Read about artist
                 </Link>
