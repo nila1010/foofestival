@@ -22,12 +22,13 @@ module.exports = {
       },
       colors: {
         bgprim: "var(--bg-primary)",
+        bgprimlight: "var(--bg-primary-light)",
         bgsecon: "var(--bg-secondary)",
         textprim: "var(--text-primary)",
         textsecon: "var(--text-secondary)",
         btntextsecon: "var(--btn-text-secon)",
 
-        border: "hsl(var(--border))",
+        border: "var(--border)",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "var(--btn-prim-background)",
@@ -45,20 +46,20 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--card)",
+          foreground: "(var(--card-foreground)",
         },
       },
       borderRadius: {

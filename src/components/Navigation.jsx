@@ -2,7 +2,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 export default function Navigation() {
   return (
-    <section className="flex justify-between items-center px-10 py-10">
+    <section className="flex justify-between items-center px-10 py-2">
       <p className="text-3xl font-black">FooFestival</p>
       <nav>
         <ul className="flex gap-5">

@@ -15,6 +15,7 @@
     /*COLORS*/
     /* dark puple */
     --bg-primary: oklch(37.896% 0.1009 290.58);
+    --bg-primary-light: oklch(37.896% 0.1009 290.58 / 0.501);
     /*extra dark*/
     --bg-secondary: oklch(33.47% 0.06941 283.12);
     /* gray */
@@ -31,11 +32,11 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: oklch(33.47% 0.06941 283.12);
+    --card-foreground: oklch(95.963% 0.00214 197.12);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: oklch(33.47% 0.06941 283.12);
+    --popover-foreground: oklch(95.963% 0.00214 197.12);
 
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
@@ -43,8 +44,8 @@
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: oklch(95.963% 0.00214 197.12);
+    --muted-foreground: oklch(95.963% 0.00214 197.12);
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -52,7 +53,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: oklch(93.114% 0.19848 123.3);
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 

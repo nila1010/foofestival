@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${openSans.className} font-light text-md bg-bgprim text-textprim`}>
-        <header className="z-10 relative bg-bgprim/10">
+        <header className="relative z-10 bg-bgprimlight">
           <Navigation />
         </header>
         <main>{children}</main>
