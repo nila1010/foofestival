@@ -22,6 +22,7 @@ module.exports = {
       },
       colors: {
         bgprim: "var(--bg-primary)",
+        bgsecon: "var(--bg-secondary)",
         textprim: "var(--text-primary)",
         textsecon: "var(--text-secondary)",
         btntextsecon: "var(--btn-text-secon)",

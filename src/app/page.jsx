@@ -5,6 +5,7 @@ import Heading from "@/components/headings";
 import getData from "@/lib/getData";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import ArtistListStyle from "@/components/ArtistListStyle";
 
 const data = await getData("bands");
 
@@ -37,19 +38,12 @@ export default function Home() {
         </div>
       </article>
       <article className="grid place-items-center mt-44">
-        <Heading as="h2" size="2xl">
-          Full artist list
+        <Heading as="h2" size="2xl" customClass="mb-5">
+          Line up
         </Heading>
-        <ul className="flex flex-wrap gap-x-5 text-center text-pretty max-w-prose">
+        <ul className="flex flex-wrap gap-x-5 text-center justify-center text-pretty max-w-prose bg-bgsecon py-5 px-10 outline outline-primary rounded">
           {data.map((oneArtist, index) => {
-            return (
-              <>
-                <li key={oneArtist.name} style={{ fontSize: index < 10 ? "40px" : "16px" }}>
-                  {oneArtist.name}
-                </li>
-                {index === 9 && <br className="h-2" />}
-              </>
-            );
+            return <ArtistListStyle key={oneArtist.name} oneArtist={oneArtist} i={index} />;
           })}
         </ul>
       </article>
