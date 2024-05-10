@@ -65,7 +65,6 @@ export default function page() {
           return (
             <Card key={oneArtist.name}>
               <CardHeader>
-                <HeartRadioBtn check={checkArray.filter((one) => one === oneArtist.name)} />
                 <CardTitle>{oneArtist.name}</CardTitle>
                 <CardDescription>
                   <span className="font-medium">Genre - </span>
@@ -73,7 +72,8 @@ export default function page() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <img className="rounded" src={oneArtist.logo} alt="test" />
+                <img className="rounded w-full object-cover aspect-video" src={!oneArtist.logo.startsWith("https://source.unsplash.com/") ? `http://localhost:8080/logos/${oneArtist.logo}` : oneArtist.logo} alt="test" />
+
                 {/* <Image src={`/${oneArtist.logo}`} height={100} width={100} alt="logo of the artist" /> */}
               </CardContent>
               <CardFooter>
@@ -87,6 +87,7 @@ export default function page() {
                 <Link prefetch={false} href={oneArtist.slug} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
                   Read about artist
                 </Link>
+                <HeartRadioBtn check={checkArray.filter((one) => one === oneArtist.name)} />
               </CardFooter>
             </Card>
           );
