@@ -38,9 +38,12 @@ export default function Home() {
         </div>
       </article>
       <article className="grid place-items-center mt-44">
-        <Heading as="h2" size="2xl" customClass="mb-5">
+        <Heading as="h2" size="2xl">
           Line up
         </Heading>
+        <Link href="/artists" className={`${buttonVariants({ variant: "link", size: "md" })} mb-5`}>
+          See all artist
+        </Link>
         <ul className="flex flex-wrap gap-x-5 text-center justify-center text-pretty max-w-prose bg-bgsecon py-5 px-10 outline outline-primary rounded">
           {data.map((oneArtist, index) => {
             return <ArtistListStyle key={oneArtist.name} oneArtist={oneArtist} i={index} />;
