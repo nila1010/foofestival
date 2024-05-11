@@ -1,21 +1,28 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import HeroComponent from "@/components/HeroComponent";
 import Heading from "@/components/Headings";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import getData from "@/lib/getData";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import HeartRadioBtn from "@/components/HeartRadioBtn";
 
-export default function page() {
+export default function Page() {
   const [artists, setArtists] = useState([]);
   const [filteredArtists, setFilteredArtists] = useState("");
+  const [userLiked, setUserLiked] = useState(["Tool", "Nirvana"]);
 
-  console.log(filteredArtists);
+  function setLike(parm) {
+    setUserLiked((old) => {
+      return [...old, parm];
+    });
+  }
+
+  console.log(userLiked);
+
   async function fetchData() {
     const data = await getData("bands");
     setArtists(data);
@@ -23,16 +30,13 @@ export default function page() {
   let filtered = artists;
   const genres = [...new Set(artists.map((band) => band.genre))];
 
-  let checkArray = [];
   useEffect(() => {
     fetchData();
-    checkArray = ["Tool"];
   }, []);
 
   if (filteredArtists) {
     filtered = artists.filter((artist) => artist.genre === filteredArtists);
   }
-  console.log(checkArray);
 
   return (
     <section>
@@ -87,7 +91,7 @@ export default function page() {
                 <Link prefetch={false} href={oneArtist.slug} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
                   Read about artist
                 </Link>
-                <HeartRadioBtn check={checkArray.filter((one) => one === oneArtist.name)} />
+                <HeartRadioBtn setLike={setLike} oneArtist={oneArtist.name} check={userLiked.filter((one) => one === oneArtist.name)} />
               </CardFooter>
             </Card>
           );
