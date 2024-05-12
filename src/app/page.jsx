@@ -2,7 +2,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 import Link from "next/link";
 import Image from "next/image";
-import Heading from "@/components/headings";
+import Heading from "@/components/Headings";
 import { getData } from "@/lib/crud";
 import ArtistListStyle from "@/components/ArtistListStyle";
 import HeroComponent from "@/components/HeroComponent";
