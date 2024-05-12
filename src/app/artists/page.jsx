@@ -6,26 +6,30 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import HeroComponent from "@/components/HeroComponent";
 import Heading from "@/components/Headings";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import getData from "@/lib/getData";
+import { addLikes, getData, getLikes } from "@/lib/crud";
 import { useState, useEffect } from "react";
 import HeartRadioBtn from "@/components/HeartRadioBtn";
 
 export default function Page() {
   const [artists, setArtists] = useState([]);
   const [filteredArtists, setFilteredArtists] = useState("");
-  const [userLiked, setUserLiked] = useState(["Tool", "Nirvana"]);
+  const [userLiked, setUserLiked] = useState([]);
 
   function setLike(parm) {
     setUserLiked((old) => {
+      if (old.filter((o) => o === parm).length > 0) {
+        const newArray = old.filter((o) => o !== parm);
+        return newArray;
+      }
       return [...old, parm];
     });
   }
 
-  console.log(userLiked);
-
   async function fetchData() {
     const data = await getData("bands");
+    const likes = await getLikes("Nicolai");
     setArtists(data);
+    setUserLiked(likes);
   }
   let filtered = artists;
   const genres = [...new Set(artists.map((band) => band.genre))];
@@ -33,6 +37,12 @@ export default function Page() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (userLiked.length > 1) {
+      addLikes(userLiked, "2fe80c15-d5b5-4904-ad31-32f08068880f");
+    }
+  }, [userLiked]);
 
   if (filteredArtists) {
     filtered = artists.filter((artist) => artist.genre === filteredArtists);
