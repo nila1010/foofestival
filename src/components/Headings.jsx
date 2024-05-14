@@ -17,7 +17,7 @@ export default function Heading({ children, as = "h1", style = "none", customCla
     lg: "text-lg",
     xl: "text-xl",
     "2xl": "text-2xl",
-    "3xl": "text-3xl",
+    "3xl": "text-3xl leading-tight",
   };
 
   return <Tag className={`${textStyle[style]} ${headingSize[size]} ${headingStyle[as]} ${customClass} max-w-fit`}>{children}</Tag>;

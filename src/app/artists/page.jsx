@@ -98,7 +98,7 @@ export default function Page() {
                     </p>
                   );
                 })} */}
-                <Link prefetch={false} href={oneArtist.slug} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
+                <Link prefetch={false} href={`/artists/${oneArtist.slug}`} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
                   Read about artist
                 </Link>
                 <HeartRadioBtn setLike={setLike} oneArtist={oneArtist.name} check={userLiked.filter((one) => one === oneArtist.name)} />
