@@ -19,6 +19,7 @@ export default function Page() {
     setUserLiked((old) => {
       if (old.filter((o) => o === parm).length > 0) {
         const newArray = old.filter((o) => o !== parm);
+        addLikes(newArray, "2fe80c15-d5b5-4904-ad31-32f08068880f");
         return newArray;
       }
       addLikes([...old, parm], "2fe80c15-d5b5-4904-ad31-32f08068880f");
@@ -38,12 +39,6 @@ export default function Page() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  /*  useEffect(() => {
-    if (userLiked.length > 1) {
-      addLikes(userLiked, "2fe80c15-d5b5-4904-ad31-32f08068880f");
-    }
-  }, [userLiked]); */
 
   if (filteredArtists) {
     filtered = artists.filter((artist) => artist.genre === filteredArtists);
