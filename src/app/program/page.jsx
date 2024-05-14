@@ -1,11 +1,14 @@
 "use client";
 import { getData } from "@/lib/crud";
-import { useState, useRef, useEffect } from "react";
+import combinedData from "@/lib/combineData";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { Separator } from "@/components/ui/separator";
 import Heading from "@/components/Headings";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Program() {
+  /* const [data, setData] = useState(); */
   const [midgard, setMidgard] = useState([]);
   const [vanaheim, setVanaheim] = useState([]);
   const [jotunheim, setJotunheim] = useState([]);
@@ -15,12 +18,12 @@ export default function Program() {
   const hour = date.getHours();
 
   async function fetchData(parm) {
-    const data = await getData("schedule");
+    const data = await combinedData();
+    /* setData(data[parm]); */
     setMidgard(data.Midgard[parm]);
     setVanaheim(data.Vanaheim[parm]);
     setJotunheim(data.Jotunheim[parm]);
   }
-
   function convertToWeekDay(parm) {
     const dayFullName = {
       mon: "Monday",
@@ -50,10 +53,10 @@ export default function Program() {
     const scrollToRow = parseInt(hour / 2 + 1);
 
     const scrollToPosition = parseInt(scrollToRow * rowHeight - containerHeight / 2);
-    console.log(scrollToPosition);
 
     tableRef.current.scrollTop = scrollToPosition;
-  }, [midgard]);
+  }, [day]);
+
   return (
     <section className="px-10 grid">
       <Heading as="h1" size="2xl" customClass="justify-self-center mb-2">
@@ -153,6 +156,10 @@ export default function Program() {
             return (
               <div key={i}>
                 <p className="h-[100px] p-3">{act.act === "break" ? "" : act.act}</p>
+                {console.log(act.info.name)}
+                {/*   <Suspense fallback={<p>loading</p>}>
+                  <Image src={act.info[logo]} alt="Picture of the artist" width={100} height={100} />
+                </Suspense> */}
                 <Separator />
               </div>
             );
