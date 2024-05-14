@@ -12,8 +12,8 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="/program" className={buttonVariants({ variant: "link" })}>
-              Live schedual
+            <Link href="/schedule" className={buttonVariants({ variant: "link" })}>
+              Live schedule
             </Link>
           </li>
           <li>
