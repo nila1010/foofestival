@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import Heading from "@/components/Headings";
 import { Button } from "@/components/ui/button";
 
-export default function Stage() {
+export default function Program() {
   const [midgard, setMidgard] = useState([]);
   const [vanaheim, setVanaheim] = useState([]);
   const [jotunheim, setJotunheim] = useState([]);
@@ -50,6 +50,7 @@ export default function Stage() {
     const scrollToRow = parseInt(hour / 2 + 1);
 
     const scrollToPosition = parseInt(scrollToRow * rowHeight - containerHeight / 2);
+    console.log(scrollToPosition);
 
     tableRef.current.scrollTop = scrollToPosition;
   }, [midgard]);

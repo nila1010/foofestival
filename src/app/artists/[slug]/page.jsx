@@ -1,4 +1,5 @@
 import Heading from "@/components/Headings";
+import Image from "next/image";
 import { getData } from "@/lib/crud";
 
 export async function generateStaticParams() {
@@ -31,7 +32,7 @@ export default async function OneBand({ params }) {
   return (
     <section className="px-10">
       <section className="grid lg:grid-cols-[2fr,_1fr] gap-5">
-        <img className="rounded w-full object-cover aspect-video" src={!data.logo.startsWith("https") ? `http://localhost:8080/logos/${data.logo}` : data.logo} alt="test" />
+        <Image className="rounded w-full object-cover aspect-video" src={!data.logo.startsWith("https") ? `http://localhost:8080/logos/${data.logo}` : data.logo} alt="Picture of the band" width={1600} height={800} />
         <div className="lg:pt-[10%]">
           <Heading as="h1" size="3xl" customClass="lg:ml-[-30%] lg:px-4">
             {data.name}

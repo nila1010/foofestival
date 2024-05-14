@@ -11,11 +11,11 @@ export default async function combinedData() {
       //console.log(day);
       schedule[stage][day].forEach((act) => {
         const matched = allArtist.find((slot) => slot.name === act.act);
-        act.info = matched;
+        [...act, ...matched];
       });
     }
   }
-  console.log(schedule.Midgard.mon);
+  console.log(schedule);
 
   /*   const times = Object.entries(allPlaytimesData).map((venue) => {
     const filtered = Object.entries(venue[1]).map((day) => {
