@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Program() {
-  /* const [data, setData] = useState(); */
   const [midgard, setMidgard] = useState([]);
   const [vanaheim, setVanaheim] = useState([]);
   const [jotunheim, setJotunheim] = useState([]);
@@ -19,7 +18,7 @@ export default function Program() {
 
   async function fetchData(parm) {
     const data = await combinedData();
-    /* setData(data[parm]); */
+
     setMidgard(data.Midgard[parm]);
     setVanaheim(data.Vanaheim[parm]);
     setJotunheim(data.Jotunheim[parm]);
@@ -55,7 +54,7 @@ export default function Program() {
     const scrollToPosition = parseInt(scrollToRow * rowHeight - containerHeight / 2);
 
     tableRef.current.scrollTop = scrollToPosition;
-  }, [day]);
+  }, [midgard]);
 
   return (
     <section className="px-10 grid">
@@ -141,37 +140,39 @@ export default function Program() {
         <div>
           {midgard.map((time, i) => {
             return (
-              <div key={time.start}>
-                <div className="h-[100px] p-3">
-                  <p>{time.start}</p>
+              <>
+                <div key={time.start} className="h-[200px] py-3 grid">
+                  <p className="">{time.start}</p>
                 </div>
-                <Separator />
-              </div>
+                <Separator className="self-end" />
+              </>
             );
           })}
         </div>
 
-        <div className="">
+        <div>
           {midgard.map((act, i) => {
             return (
-              <div key={i}>
-                <p className="h-[100px] p-3">{act.act === "break" ? "" : act.act}</p>
-                {console.log(act.info.name)}
-                {/*   <Suspense fallback={<p>loading</p>}>
-                  <Image src={act.info[logo]} alt="Picture of the artist" width={100} height={100} />
-                </Suspense> */}
+              <>
+                <div key={i} className="h-[200px] py-3 grid place-items-center">
+                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
+                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
+                </div>
                 <Separator />
-              </div>
+              </>
             );
           })}
         </div>
         <div>
           {vanaheim.map((act, i) => {
             return (
-              <div key={i}>
-                <p className="h-[100px] p-3">{act.act === "break" ? "" : act.act}</p>
+              <>
+                <div key={i} className="h-[200px] py-3 grid place-items-center">
+                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
+                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
+                </div>
                 <Separator />
-              </div>
+              </>
             );
           })}
         </div>
@@ -179,10 +180,13 @@ export default function Program() {
         <div>
           {jotunheim.map((act, i) => {
             return (
-              <div key={i}>
-                <p className="h-[100px] p-3">{act.act === "break" ? "" : act.act}</p>
+              <>
+                <div key={i} className="h-[200px] py-3 grid place-items-center">
+                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
+                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
+                </div>
                 <Separator />
-              </div>
+              </>
             );
           })}
         </div>

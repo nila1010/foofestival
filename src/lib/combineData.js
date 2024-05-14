@@ -8,10 +8,16 @@ export default async function combinedData() {
     for (let day in schedule[stage]) {
       schedule[stage][day].forEach((act) => {
         const matched = allArtist.find((slot) => slot.name === act.act);
-        console.log(matched);
-        act.info = matched;
+        if (matched) {
+          act.info = matched.logo;
+        }
       });
     }
   }
+  console.log(schedule);
   return schedule;
 }
+
+/* const mergedArray = allArtist.map((oneArtst) => {
+    const matchedArray = times.flat(Infinity).find((slot) => slot.act === oneArtst.name);
+    return { ...oneArtst, ...matchedArray }; */
