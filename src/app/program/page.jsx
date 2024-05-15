@@ -1,11 +1,10 @@
 "use client";
-import { getData } from "@/lib/crud";
 import combinedData from "@/lib/combineData";
-import { useState, useRef, useEffect, Suspense } from "react";
-import { Separator } from "@/components/ui/separator";
+import { useState, useRef, useEffect } from "react";
 import Heading from "@/components/Headings";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import CardProgram from "@/components/CardProgram";
+import { Separator } from "@/components/ui/separator";
 
 export default function Program() {
   const [midgard, setMidgard] = useState([]);
@@ -47,7 +46,7 @@ export default function Program() {
   useEffect(() => {
     const containerHeight = tableRef.current.clientHeight;
 
-    const rowHeight = 100;
+    const rowHeight = 200;
 
     const scrollToRow = parseInt(hour / 2 + 1);
 
@@ -138,7 +137,7 @@ export default function Program() {
       </div>
       <article ref={tableRef} className="h-[600px] overflow-scroll grid grid-cols-[100px,_repeat(auto-fit,_minmax(50px,_1fr))] text-center">
         <div>
-          {midgard.map((time, i) => {
+          {midgard.map((time) => {
             return (
               <>
                 <div key={time.start} className="h-[200px] py-3 grid">
@@ -149,45 +148,20 @@ export default function Program() {
             );
           })}
         </div>
-
         <div>
-          {midgard.map((act, i) => {
-            return (
-              <>
-                <div key={i} className="h-[200px] py-3 grid place-items-center">
-                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
-                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
-                </div>
-                <Separator />
-              </>
-            );
+          {midgard.map((act) => {
+            return <CardProgram key={act.logo} band={act} />;
           })}
         </div>
         <div>
-          {vanaheim.map((act, i) => {
-            return (
-              <>
-                <div key={i} className="h-[200px] py-3 grid place-items-center">
-                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
-                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
-                </div>
-                <Separator />
-              </>
-            );
+          {vanaheim.map((act) => {
+            return <CardProgram key={act.logo} band={act} />;
           })}
         </div>
 
         <div>
-          {jotunheim.map((act, i) => {
-            return (
-              <>
-                <div key={i} className="h-[200px] py-3 grid place-items-center">
-                  {act.act === "break" ? "" : <Image className="row-start-1 col-start-1 rounded object-cover aspect-square" src={act.info && !act.info.startsWith("https") ? `http://localhost:8080/logos/${act.info}` : act.info} alt="Picture of the band" width={160} height={160} />}
-                  <p className="row-start-1 col-start-1">{act.act === "break" ? "" : act.act}</p>
-                </div>
-                <Separator />
-              </>
-            );
+          {jotunheim.map((act) => {
+            return <CardProgram key={act.logo} band={act} />;
           })}
         </div>
       </article>

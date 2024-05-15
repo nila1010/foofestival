@@ -9,15 +9,15 @@ export default async function combinedData() {
       schedule[stage][day].forEach((act) => {
         const matched = allArtist.find((slot) => slot.name === act.act);
         if (matched) {
-          act.info = matched.logo;
+          act.logo = matched.logo;
+          act.bio = matched.bio;
+          act.members = matched.members;
+          act.genre = matched.genre;
+          act.slug = matched.slug;
         }
       });
     }
   }
-  console.log(schedule);
+
   return schedule;
 }
-
-/* const mergedArray = allArtist.map((oneArtst) => {
-    const matchedArray = times.flat(Infinity).find((slot) => slot.act === oneArtst.name);
-    return { ...oneArtst, ...matchedArray }; */
