@@ -29,8 +29,8 @@ module.exports = {
         btntextsecon: "var(--btn-text-secon)",
 
         border: "var(--border)",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        input: "var(--input)",
+        ring: "var(--ring)",
         background: "var(--btn-prim-background)",
         foreground: "hsl(var(--foreground))",
         primary: {

@@ -1,5 +1,7 @@
+const endPoint = "http://localhost:8080/";
+
 export async function getData(parm) {
-  const res = await fetch(`http://localhost:8080/${parm}`);
+  const res = await fetch(endPoint + parm);
   return await res.json();
 }
 
@@ -42,4 +44,61 @@ export async function addLikes(parm, userId) {
     body: bodyContent,
     headers: headersList,
   });
+}
+
+export async function getReservation(title, spots) {
+  const response = await fetch(endPoint + "reserve-spot", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      area: title,
+      amount: spots,
+    }),
+  });
+  return await response.json();
+}
+
+export async function getSpots() {
+  const res = await fetch(endPoint + "available-spots");
+  return await res.json();
+}
+
+export async function addBooking(info) {
+  let headersList = {
+    Accept: "application/json",
+    apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    prefer: "return=representation",
+    "Content-Type": "application/json",
+  };
+
+  let bodyContent = JSON.stringify({
+    billingfirstname: info.billingfirstname,
+    billinglastname: info.billinglastname,
+    address: info.address,
+    city: info.city,
+    zip: info.zip,
+    email: info.email,
+    tel: info.tel,
+    extrapersons: info.extrapersons,
+  });
+
+  let response = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/formFooFestival", {
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
+  });
+
+  if (!response.ok) {
+    // Log the status and full response for debugging
+    console.error(`Error: ${response.status}`);
+    const errorDetails = await response.json();
+    console.error("Error details:", errorDetails);
+    throw new Error("Failed to add booking");
+  }
+
+  let data = await response.json();
+
+  return data;
 }
