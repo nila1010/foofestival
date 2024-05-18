@@ -14,12 +14,13 @@ import { useState, useEffect } from "react";
 export default function Ticket() {
   const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
+  const [totalTickets, setTotalTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState();
   const [totalPrice, setTotalPrice] = useState(99);
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(0);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
 
@@ -29,8 +30,12 @@ export default function Ticket() {
   }
 
   useEffect(() => {
+    setTotalTickets(() => {
+      const total = parseInt(regTickets) + parseInt(vipTickets);
+      return total;
+    });
     getAvailableSpots();
-  }, []);
+  }, [regTickets, vipTickets]);
 
   useEffect(() => {
     setTotalPrice(() => {
@@ -121,51 +126,61 @@ export default function Ticket() {
                   <p>Choose a campesite</p>
                   {availableSpots && (
                     <div className="flex gap-5 flex-wrap mt-5">
-                      <CampsiteCard
-                        setPage={setPage}
-                        setResId={setResId}
-                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
-                        setCampSitePick={setCampSitePick}
-                        title="Svartheim"
-                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                        spots={availableSpots[0].available}
-                      />
-                      <CampsiteCard
-                        setPage={setPage}
-                        setResId={setResId}
-                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
-                        setCampSitePick={setCampSitePick}
-                        title="Nilfheim"
-                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                        spots={availableSpots[1].available}
-                      />
-                      <CampsiteCard
-                        setPage={setPage}
-                        setResId={setResId}
-                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
-                        setCampSitePick={setCampSitePick}
-                        title="Helheim"
-                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                        spots={availableSpots[2].available}
-                      />
-                      <CampsiteCard
-                        setPage={setPage}
-                        setResId={setResId}
-                        numOfTickets={regTickets + vipTickets}
-                        setCampSitePick={setCampSitePick}
-                        title="Muspelheim"
-                        description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty."
-                        spots={availableSpots[3].available}
-                      />
-                      <CampsiteCard
-                        setPage={setPage}
-                        setResId={setResId}
-                        numOfTickets={regTickets + vipTickets}
-                        setCampSitePick={setCampSitePick}
-                        title="Alfheim"
-                        description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner."
-                        spots={availableSpots[4].available}
-                      />
+                      {availableSpots[0].available >= totalTickets && (
+                        <CampsiteCard
+                          setPage={setPage}
+                          setResId={setResId}
+                          numOfTickets={totalTickets}
+                          setCampSitePick={setCampSitePick}
+                          title="Svartheim"
+                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                          spots={availableSpots[0].available}
+                        />
+                      )}
+                      {availableSpots[1].available >= totalTickets && (
+                        <CampsiteCard
+                          setPage={setPage}
+                          setResId={setResId}
+                          numOfTickets={totalTickets}
+                          setCampSitePick={setCampSitePick}
+                          title="Nilfheim"
+                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                          spots={availableSpots[1].available}
+                        />
+                      )}
+                      {availableSpots[2].available >= totalTickets && (
+                        <CampsiteCard
+                          setPage={setPage}
+                          setResId={setResId}
+                          numOfTickets={totalTickets}
+                          setCampSitePick={setCampSitePick}
+                          title="Helheim"
+                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                          spots={availableSpots[2].available}
+                        />
+                      )}
+                      {availableSpots[3].available >= totalTickets && (
+                        <CampsiteCard
+                          setPage={setPage}
+                          setResId={setResId}
+                          numOfTickets={totalTickets}
+                          setCampSitePick={setCampSitePick}
+                          title="Muspelheim"
+                          description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty."
+                          spots={availableSpots[3].available}
+                        />
+                      )}
+                      {availableSpots[4].available >= totalTickets && (
+                        <CampsiteCard
+                          setPage={setPage}
+                          setResId={setResId}
+                          numOfTickets={totalTickets}
+                          setCampSitePick={setCampSitePick}
+                          title="Alfheim"
+                          description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner."
+                          spots={availableSpots[4].available}
+                        />
+                      )}
                     </div>
                   )}
                 </div>
