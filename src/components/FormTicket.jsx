@@ -21,7 +21,7 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage })
   }, []);
 
   async function handleSumbmit(e) {
-    setPage(5);
+    setPage(4);
     e.preventDefault();
     let info = {};
     let extraPersons = [];
@@ -44,42 +44,87 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage })
   return (
     <form onSubmit={handleSumbmit}>
       <Label htmlFor="form_firstname">First name</Label>
-      <Input className="max-w-60" type="text" id="form_firstname" name="firstname" />
+      <Input
+        className="max-w-60"
+        type="text"
+        id="form_firstname"
+        name="firstname"
+      />
       <Label htmlFor="form_lastname">Last name</Label>
-      <Input className="max-w-60" type="text" id="form_lastname" name="lastname" />
+      <Input
+        className="max-w-60"
+        type="text"
+        id="form_lastname"
+        name="lastname"
+      />
       <Label htmlFor="form_address">Address</Label>
-      <Input className="max-w-80" type="text" id="form_addres" name="addres" />
+      <Input
+        className="max-w-80"
+        type="text"
+        id="form_addres"
+        name="addres"
+      />
       <div className="flex gap-5">
         <div>
           <Label htmlFor="form_city">City</Label>
-          <Input className="max-w-42" type="text" id="form_city" name="city" />
+          <Input
+            className="max-w-42"
+            type="text"
+            id="form_city"
+            name="city"
+          />
         </div>
         <div>
           <Label htmlFor="form_postcode">Postcode</Label>
-          <Input className="max-w-[115px]" type="text" id="form_postcode" name="postcode" />
+          <Input
+            className="max-w-[115px]"
+            type="text"
+            id="form_postcode"
+            name="postcode"
+          />
         </div>
       </div>
       <Label htmlFor="form_email">Email</Label>
-      <Input className="max-w-80" type="email" id="form_email" name="email" />
+      <Input
+        className="max-w-80"
+        type="email"
+        id="form_email"
+        name="email"
+      />
       <Label htmlFor="form_city">Phone</Label>
-      <Input className="max-w-60" type="tel" id="form_phone" name="phone" />
+      <Input
+        className="max-w-60"
+        type="tel"
+        id="form_phone"
+        name="phone"
+      />
       {totalTickets && totalTickets.length > 1 && (
         <div>
-          <Heading as="h3" size="lg" customClass="font-thin mt-5">
+          <Heading
+            as="h3"
+            size="lg"
+            customClass="font-thin mt-5">
             Extra persons names
           </Heading>
           {totalTickets.map((nu, i) => {
             return (
               <div key={i}>
                 <Label htmlFor={`form_extraname${i}`}>Extra person full name</Label>
-                <Input className="max-w-80" type="text" id={`form_extraname${i}`} name={`extraname${i}`} />
+                <Input
+                  className="max-w-80"
+                  type="text"
+                  id={`form_extraname${i}`}
+                  name={`extraname${i}`}
+                />
               </div>
             );
           })}
         </div>
       )}
 
-      <Button className="mt-5" variant="defaultline">
+      <Button
+        className="mt-5"
+        variant="defaultline">
         Sumbit
       </Button>
     </form>

@@ -9,7 +9,7 @@ const buttonVariants = cva("max-w-fit flex items-center justify-center whitespac
     variant: {
       default: "relative z-[1] overflow-hidden text-textsecon before:bg-primary before:content-[''] before:w-full before:h-full before:absolute before:inset-0 before:z-[-2] after:z-[-1] after:content-[''] after:w-0 after:h-full after:absolute after:top-0 after:left-[-40%] after:skew-x-[50deg] after:bg-secondary after:transition-all after:ease-out after:duration-700 hover:text-primary hover:after:w-[200%]",
 
-      defaultline: "relative z-[1] text-textsecon before:bg-primary before:content-[''] before:w-full before:h-full before:absolute before:inset-0 before:z-[-2] after:z-[-1] after:content-[''] after:w-0 after:h-full after:absolute after:top-0 after:left-[-40%] after:skew-x-[50deg] after:bg-secondary after:transition-all after:ease-out after:duration-700 hover:outline hover:outline-primary hover:text-primary hover:after:w-[200%]",
+      defaultline: "relative z-[1] overflow-hidden text-textsecon before:bg-primary before:content-[''] before:w-full before:h-full before:absolute before:inset-0 before:z-[-2] after:z-[-1] after:content-[''] after:w-0 after:h-full after:absolute after:top-0 after:left-[-40%] after:skew-x-[50deg] after:bg-secondary after:transition-all after:ease-out after:duration-700 hover:outline hover:outline-primary hover:text-primary hover:after:w-[200%]",
 
       destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
       outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
@@ -34,7 +34,13 @@ const buttonVariants = cva("max-w-fit flex items-center justify-center whitespac
 
 const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : "button";
-  return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    />
+  );
 });
 Button.displayName = "Button";
 

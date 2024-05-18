@@ -111,9 +111,9 @@ export default function Ticket() {
           <section className="grid grid-cols-[2fr_1fr] gap-10">
             <article className="ml-10">
               <ol className="flex gap-5 py-5">
-                <li className={page < 4 ? "text-btntextsecon" : ""}>Accomidation</li>
-                <li className={page === 4 ? "text-btntextsecon" : ""}>Information</li>
-                <li className={page === 5 ? "text-btntextsecon" : ""}>Summery</li>
+                <li className={page < 3 ? "text-btntextsecon" : ""}>Accomidation</li>
+                <li className={page === 3 ? "text-btntextsecon" : ""}>Information</li>
+                <li className={page === 4 ? "text-btntextsecon" : ""}>Summery</li>
               </ol>
               <Separator className="w-[80%]" />
               {page === 1 && (
@@ -190,34 +190,6 @@ export default function Ticket() {
                   <Heading
                     as="h2"
                     size="lg">
-                    You want us to set up your camp?
-                  </Heading>
-                  <p className="mb-5 max-w-prose">You can choose to buy tents and we will prepair them for you </p>
-                  <div className="flex gap-5">
-                    <Button
-                      size="xl"
-                      onClick={() => {
-                        setPage(3);
-                      }}
-                      variant="default">
-                      Yes
-                    </Button>
-                    <Button
-                      size="xl"
-                      onClick={() => {
-                        setPage(4);
-                      }}
-                      variant="default">
-                      No
-                    </Button>
-                  </div>
-                </div>
-              )}
-              {page === 3 && (
-                <div className="mt-5">
-                  <Heading
-                    as="h2"
-                    size="lg">
                     Choose tents
                   </Heading>
                   <p className="mb-5">Numbers of tent must match tickets purchased</p>
@@ -229,7 +201,7 @@ export default function Ticket() {
                   />
                 </div>
               )}
-              {page === 4 && (
+              {page === 3 && (
                 <div className="mt-5">
                   <Heading
                     as="h2"
@@ -245,7 +217,7 @@ export default function Ticket() {
                   />
                 </div>
               )}
-              {page === 5 && <div>Summery</div>}
+              {page === 4 && <div>Summery</div>}
             </article>
             <article className="bg-textprim text-bgprim rounded-bl grid auto-rows-max justify-end pr-10">
               <Heading

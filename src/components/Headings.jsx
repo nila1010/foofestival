@@ -15,7 +15,7 @@ export default function Heading({ children, as = "h1", style = "none", customCla
     sm: "text-sm",
     md: "text-md",
     lg: "text-lg",
-    xl: "text-xl",
+    xl: "text-xl leading-tight",
     "2xl": "text-2xl",
     "3xl": "text-3xl leading-tight",
   };
