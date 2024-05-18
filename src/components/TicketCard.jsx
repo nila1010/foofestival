@@ -4,13 +4,13 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useRef } from "react";
 
-export default function TicketCard({ title, price, description, label, inputId, setRegTickets, setVipTickets }) {
+export default function TicketCard({ title, price, description, label, inputId, setRegTickets, setVipTickets, setPage }) {
   const inputValue = useRef();
   function setValue() {
+    setPage(1);
     const numTickets = inputValue.current.value;
     if (title === "Regular ticket") {
       setRegTickets((o) => (o = numTickets));
-      console.log("reg");
     } else {
       setVipTickets((o) => (o = numTickets));
     }

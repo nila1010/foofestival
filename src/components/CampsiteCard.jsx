@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { getReservation } from "@/lib/crud";
 
-export default function CampsiteCard({ title, description, spots, setCampSitePick, numOfTickets, setResId }) {
+export default function CampsiteCard({ title, description, spots, setCampSitePick, numOfTickets, setResId, setPage }) {
   const [site, setSite] = useState();
 
   async function getResId() {
@@ -13,6 +13,7 @@ export default function CampsiteCard({ title, description, spots, setCampSitePic
   }
   useEffect(() => {
     if (site) {
+      setPage(2);
       setCampSitePick(site);
       getResId();
     }

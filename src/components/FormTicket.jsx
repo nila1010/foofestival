@@ -5,7 +5,7 @@ import Heading from "./Headings";
 import { addBooking } from "@/lib/crud";
 import { useEffect, useState } from "react";
 
-export default function FormTicket({ vipTickets, regTickets, setInfo }) {
+export default function FormTicket({ vipTickets, regTickets, setInfo, setPage }) {
   const [totalTickets, setTotalTickets] = useState();
 
   useEffect(() => {
@@ -21,8 +21,10 @@ export default function FormTicket({ vipTickets, regTickets, setInfo }) {
   }, []);
 
   async function handleSumbmit(e) {
+    setPage(5);
     e.preventDefault();
     let info = {};
+    let extraPersons = [];
     const formData = new FormData(e.target);
     info.billingfirstname = formData.get("firstname");
     info.billinglastname = formData.get("lastname");
@@ -31,9 +33,13 @@ export default function FormTicket({ vipTickets, regTickets, setInfo }) {
     info.zip = formData.get("postcode");
     info.email = formData.get("email");
     info.tel = formData.get("phone");
-    /*  info.extrapersons = formData.get(""); */
-    await addBooking(info);
-    setInfo(true);
+    totalTickets.forEach((extra, i) => {
+      extraPersons.push(formData.get(`extraname${i}`));
+    });
+
+    info.extrapersons = extraPersons;
+    /*  await addBooking(info); */
+    setInfo(info);
   }
   return (
     <form onSubmit={handleSumbmit}>

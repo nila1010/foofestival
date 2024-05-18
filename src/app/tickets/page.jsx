@@ -1,21 +1,27 @@
 "use client";
 import CampsiteCard from "@/components/CampsiteCard";
+import ChooseTents from "@/components/ChooseTents";
 import FormTicket from "@/components/FormTicket";
 import Heading from "@/components/Headings";
 import HeroComponent from "@/components/HeroComponent";
 import TicketCard from "@/components/TicketCard";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { getSpots } from "@/lib/crud";
 import { useState, useEffect } from "react";
 export default function Ticket() {
-  const [regTickets, setRegTickets] = useState(4);
+  const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState();
   const [totalPrice, setTotalPrice] = useState(99);
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
+  const [page, setPage] = useState(3);
+  const [greenOpt, setGreenOpt] = useState(false);
+  const [tents, setTents] = useState();
 
   async function getAvailableSpots() {
     const spots = await getSpots();
@@ -28,10 +34,22 @@ export default function Ticket() {
 
   useEffect(() => {
     setTotalPrice(() => {
+      if (greenOpt && tents) {
+        const newPrice = 99 + regTickets * 799 + vipTickets * 1299 + 249 + tents.opt1 * 299 + tents.opt2 * 399;
+        return newPrice;
+      }
+      if (greenOpt) {
+        const newPrice = 99 + regTickets * 799 + vipTickets * 1299 + 249;
+        return newPrice;
+      }
+      if (tents) {
+        const newPrice = 99 + regTickets * 799 + vipTickets * 1299 + tents.opt1 * 299 + tents.opt2 * 399;
+        return newPrice;
+      }
       const newPrice = 99 + regTickets * 799 + vipTickets * 1299;
       return newPrice;
     });
-  }, [regTickets, vipTickets]);
+  }, [regTickets, vipTickets, greenOpt, tents]);
 
   useEffect(() => {
     if (resId) {
@@ -41,20 +59,44 @@ export default function Ticket() {
 
   return (
     <section>
-      {regTickets === 0 && vipTickets === 0 && (
+      {page === 0 && (
         <section className="grid place-items-center">
-          <HeroComponent imgPath="/img/headerindex.png" btnText="Program" btnLink="/program" btn2Text="Artists" btn2Link="/artists" />
-          <Heading as="h1" size="2xl">
+          <HeroComponent
+            imgPath="/img/headerindex.png"
+            btnText="Program"
+            btnLink="/program"
+            btn2Text="Artists"
+            btn2Link="/artists"
+          />
+          <Heading
+            as="h1"
+            size="2xl">
             Tickets
           </Heading>
           <p className="max-w-prose text-center">Experience the thrill of live music and the excitement of unforgettable events with our exclusive ticket offerings!</p>
           <div className="flex gap-10 pt-16 flex-wrap place-content-center">
-            <TicketCard setRegTickets={setRegTickets} title="Regular ticket" price="799,-" description="Unlock the gateway to unforgettable experiences with our regular tickets!" label="Number of regular tickets" inputId="regTicket" />
-            <TicketCard setVipTickets={setVipTickets} title="VIP ticket" price="1299,-" description="Elevate your experience to the next level with our VIP tickets! Gain exclusive access to premium perks, priority entry, VIP lounges and more." label="Number of vip tickets" inputId="vipTicket" />
+            <TicketCard
+              setPage={setPage}
+              setRegTickets={setRegTickets}
+              title="Regular ticket"
+              price="799,-"
+              description="Unlock the gateway to unforgettable experiences with our regular tickets!"
+              label="Number of regular tickets"
+              inputId="regTicket"
+            />
+            <TicketCard
+              setPage={setPage}
+              setVipTickets={setVipTickets}
+              title="VIP ticket"
+              price="1299,-"
+              description="Elevate your experience to the next level with our VIP tickets! Gain exclusive access to premium perks, priority entry, VIP lounges and more."
+              label="Number of vip tickets"
+              inputId="vipTicket"
+            />
           </div>
         </section>
       )}
-      {(regTickets > 0 || vipTickets > 0) && (
+      {page >= 1 && (
         <section>
           <ol className="bg-textprim text-bgprim flex gap-3 justify-end px-10 py-10">
             <li>1 Shop</li>
@@ -64,41 +106,137 @@ export default function Ticket() {
           <section className="grid grid-cols-[2fr_1fr] gap-10">
             <article className="ml-10">
               <ol className="flex gap-5 py-5">
-                <li className={!resId && "text-btntextsecon"}>Accomidation</li>
-                <li className={resId && "text-btntextsecon"}>Information</li>
-                <li>Summery</li>
+                <li className={page < 4 ? "text-btntextsecon" : ""}>Accomidation</li>
+                <li className={page === 4 ? "text-btntextsecon" : ""}>Information</li>
+                <li className={page === 5 ? "text-btntextsecon" : ""}>Summery</li>
               </ol>
               <Separator className="w-[80%]" />
-              {!campSitePick && (
+              {page === 1 && (
                 <div className="mt-5">
-                  <Heading as="h2" size="lg">
+                  <Heading
+                    as="h2"
+                    size="lg">
                     Accomidation
                   </Heading>
                   <p>Choose a campesite</p>
                   {availableSpots && (
                     <div className="flex gap-5 flex-wrap mt-5">
-                      <CampsiteCard setResId={setResId} numOfTickets={regTickets > 0 ? regTickets : vipTickets} setCampSitePick={setCampSitePick} title="Svartheim" description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat." spots={availableSpots[0].available} />
-                      <CampsiteCard setResId={setResId} numOfTickets={regTickets > 0 ? regTickets : vipTickets} setCampSitePick={setCampSitePick} title="Nilfheim" description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat." spots={availableSpots[1].available} />
-                      <CampsiteCard setResId={setResId} numOfTickets={regTickets > 0 ? regTickets : vipTickets} setCampSitePick={setCampSitePick} title="Helheim" description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat." spots={availableSpots[2].available} />
-                      <CampsiteCard setResId={setResId} numOfTickets={regTickets + vipTickets} setCampSitePick={setCampSitePick} title="Muspelheim" description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty." spots={availableSpots[3].available} />
-                      <CampsiteCard setResId={setResId} numOfTickets={regTickets + vipTickets} setCampSitePick={setCampSitePick} title="Alfheim" description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner." spots={availableSpots[4].available} />
+                      <CampsiteCard
+                        setPage={setPage}
+                        setResId={setResId}
+                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
+                        setCampSitePick={setCampSitePick}
+                        title="Svartheim"
+                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                        spots={availableSpots[0].available}
+                      />
+                      <CampsiteCard
+                        setPage={setPage}
+                        setResId={setResId}
+                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
+                        setCampSitePick={setCampSitePick}
+                        title="Nilfheim"
+                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                        spots={availableSpots[1].available}
+                      />
+                      <CampsiteCard
+                        setPage={setPage}
+                        setResId={setResId}
+                        numOfTickets={regTickets > 0 ? regTickets : vipTickets}
+                        setCampSitePick={setCampSitePick}
+                        title="Helheim"
+                        description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                        spots={availableSpots[2].available}
+                      />
+                      <CampsiteCard
+                        setPage={setPage}
+                        setResId={setResId}
+                        numOfTickets={regTickets + vipTickets}
+                        setCampSitePick={setCampSitePick}
+                        title="Muspelheim"
+                        description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty."
+                        spots={availableSpots[3].available}
+                      />
+                      <CampsiteCard
+                        setPage={setPage}
+                        setResId={setResId}
+                        numOfTickets={regTickets + vipTickets}
+                        setCampSitePick={setCampSitePick}
+                        title="Alfheim"
+                        description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner."
+                        spots={availableSpots[4].available}
+                      />
                     </div>
                   )}
                 </div>
               )}
-              {resId && !info && (
+              {page === 2 && (
                 <div className="mt-5">
-                  <Heading as="h2" size="lg">
+                  <Heading
+                    as="h2"
+                    size="lg">
+                    You want us to set up your camp?
+                  </Heading>
+                  <p className="mb-5 max-w-prose">You can choose to buy tents and we will prepair them for you </p>
+                  <div className="flex gap-5">
+                    <Button
+                      size="xl"
+                      onClick={() => {
+                        setPage(3);
+                      }}
+                      variant="default">
+                      Yes
+                    </Button>
+                    <Button
+                      size="xl"
+                      onClick={() => {
+                        setPage(4);
+                      }}
+                      variant="default">
+                      No
+                    </Button>
+                  </div>
+                </div>
+              )}
+              {page === 3 && (
+                <div className="mt-5">
+                  <Heading
+                    as="h2"
+                    size="lg">
+                    Choose tents
+                  </Heading>
+                  <p className="mb-5">Numbers of tent must match tickets purchased</p>
+                  <ChooseTents
+                    setPage={setPage}
+                    setTents={setTents}
+                    regTickets={regTickets}
+                    vipTickets={vipTickets}
+                  />
+                </div>
+              )}
+              {page === 4 && (
+                <div className="mt-5">
+                  <Heading
+                    as="h2"
+                    size="lg">
                     Billing person
                   </Heading>
                   <p className="mb-5">Fill out the form to complete the resevation</p>
-                  <FormTicket setInfo={setInfo} regTickets={regTickets} vipTickets={vipTickets} />
+                  <FormTicket
+                    setPage={setPage}
+                    setInfo={setInfo}
+                    regTickets={regTickets}
+                    vipTickets={vipTickets}
+                  />
                 </div>
               )}
-              {info && <div>Summery</div>}
+              {page === 5 && <div>Summery</div>}
             </article>
             <article className="bg-textprim text-bgprim rounded-bl grid auto-rows-max justify-end pr-10">
-              <Heading as="h2" size="lg" customClass="ml-auto">
+              <Heading
+                as="h2"
+                size="lg"
+                customClass="ml-auto">
                 Summery
               </Heading>
               <p className="text-right">
@@ -107,11 +245,25 @@ export default function Ticket() {
               <p className="text-right">
                 Campsite <span>{campSitePick}</span>
               </p>
-              <Heading as="h3" size="sm" customClass="ml-auto">
-                Optional
-              </Heading>
+              <div className="flex gap-5 justify-end items-center">
+                <Label htmlFor="option1">Green camping option 249,-</Label>
+                <Input
+                  onChange={() => {
+                    setGreenOpt((o) => (o = !o));
+                  }}
+                  className="h-9 w-fit"
+                  type="checkbox"
+                  name="option1"
+                  id="option1"></Input>
+              </div>
+              {tents && (
+                <div className="text-right">
+                  {tents.opt1 > 0 && <p>2 persons tent x {tents.opt1}</p>}
+                  {tents.opt2 > 0 && <p>3 persons tent x {tents.opt2}</p>}
+                </div>
+              )}
               <p className="text-right">Fixed booking fee 99,-</p>
-              <div className="flex gap-5 my-3 items-center">
+              <div className="flex gap-5 my-3 justify-end items-center">
                 {info && <Button variant="default">Payment</Button>}
                 <p className="font-bold text-right">
                   Total: <span>{totalPrice}</span>,-
