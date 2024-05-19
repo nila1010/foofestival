@@ -1,9 +1,11 @@
 "use client";
 import CampsiteCard from "@/components/CampsiteCard";
 import ChooseTents from "@/components/ChooseTents";
+import ConfirmationTicket from "@/components/ConfirmationTicket";
 import FormTicket from "@/components/FormTicket";
 import Heading from "@/components/Headings";
 import HeroComponent from "@/components/HeroComponent";
+import PaymentTicket from "@/components/PaymentTicket";
 import SummeryTicket from "@/components/SummeryTicket";
 import TicketCard from "@/components/TicketCard";
 import { Button } from "@/components/ui/button";
@@ -24,6 +26,7 @@ export default function Ticket() {
   const [page, setPage] = useState(0);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
+  const [bookingInfo, setBookingInfo] = useState({});
 
   async function getAvailableSpots() {
     const spots = await getSpots();
@@ -82,6 +85,7 @@ export default function Ticket() {
           <p className="max-w-prose text-center">Experience the thrill of live music and the excitement of unforgettable events with our exclusive ticket offerings!</p>
           <div className="flex gap-10 pt-16 flex-wrap place-content-center">
             <TicketCard
+              setBookingInfo={setBookingInfo}
               setPage={setPage}
               setRegTickets={setRegTickets}
               title="Regular ticket"
@@ -91,6 +95,7 @@ export default function Ticket() {
               inputId="regTicket"
             />
             <TicketCard
+              setBookingInfo={setBookingInfo}
               setPage={setPage}
               setVipTickets={setVipTickets}
               title="VIP ticket"
@@ -102,7 +107,7 @@ export default function Ticket() {
           </div>
         </section>
       )}
-      {page >= 1 && (
+      {page >= 1 && page < 6 && (
         <section>
           <ol className="bg-textprim text-bgprim flex gap-3 justify-end px-10 py-10">
             <li>1 Shop</li>
@@ -115,6 +120,7 @@ export default function Ticket() {
                 <li className={page < 3 ? "text-btntextsecon" : ""}>Accomidation</li>
                 <li className={page === 3 ? "text-btntextsecon" : ""}>Information</li>
                 <li className={page === 4 ? "text-btntextsecon" : ""}>Summery</li>
+                <li className={page === 5 ? "text-btntextsecon" : ""}>Payment</li>
               </ol>
               <Separator className="w-[80%]" />
               {page === 1 && (
@@ -129,6 +135,7 @@ export default function Ticket() {
                     <div className="flex gap-5 flex-wrap mt-5">
                       {availableSpots[0].available >= totalTickets && (
                         <CampsiteCard
+                          setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
                           numOfTickets={totalTickets}
@@ -140,6 +147,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[1].available >= totalTickets && (
                         <CampsiteCard
+                          setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
                           numOfTickets={totalTickets}
@@ -151,6 +159,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[2].available >= totalTickets && (
                         <CampsiteCard
+                          setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
                           numOfTickets={totalTickets}
@@ -162,6 +171,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[3].available >= totalTickets && (
                         <CampsiteCard
+                          setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
                           numOfTickets={totalTickets}
@@ -173,6 +183,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[4].available >= totalTickets && (
                         <CampsiteCard
+                          setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
                           numOfTickets={totalTickets}
@@ -195,6 +206,7 @@ export default function Ticket() {
                   </Heading>
                   <p className="mb-5">Numbers of tent must match tickets purchased</p>
                   <ChooseTents
+                    setBookingInfo={setBookingInfo}
                     setPage={setPage}
                     setTents={setTents}
                     regTickets={regTickets}
@@ -211,6 +223,7 @@ export default function Ticket() {
                   </Heading>
                   <p className="mb-5">Fill out the form to complete the resevation</p>
                   <FormTicket
+                    setBookingInfo={setBookingInfo}
                     setPage={setPage}
                     setInfo={setInfo}
                     regTickets={regTickets}
@@ -226,6 +239,20 @@ export default function Ticket() {
                     Summery personal information
                   </Heading>
                   <SummeryTicket info={info} />
+                </div>
+              )}
+              {page === 5 && (
+                <div className="mt-5">
+                  <Heading
+                    as="h2"
+                    size="lg">
+                    Payment
+                  </Heading>
+                  <PaymentTicket
+                    setPage={setPage}
+                    bookingInfo={bookingInfo}
+                    resId={resId}
+                  />
                 </div>
               )}
             </article>
@@ -261,7 +288,15 @@ export default function Ticket() {
               )}
               <p className="text-right">Fixed booking fee 99,-</p>
               <div className="flex gap-5 my-3 justify-end items-center">
-                {page === 4 && <Button variant="default">Payment</Button>}
+                {page === 4 && (
+                  <Button
+                    onClick={() => {
+                      setPage(5);
+                    }}
+                    variant="default">
+                    Payment
+                  </Button>
+                )}
                 <p className="font-bold text-right">
                   Total: <span>{totalPrice}</span>,-
                 </p>
@@ -269,6 +304,12 @@ export default function Ticket() {
             </article>
           </section>
         </section>
+      )}
+      {page === 6 && (
+        <ConfirmationTicket
+          btnLink="/program"
+          btnText="See program"
+        />
       )}
     </section>
   );

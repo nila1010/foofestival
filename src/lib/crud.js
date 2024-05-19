@@ -82,23 +82,80 @@ export async function addBooking(info) {
     email: info.email,
     tel: info.tel,
     extrapersons: info.extrapersons,
+    userid: info.userid,
   });
 
-  let response = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/formFooFestival", {
+  let response = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/form_foo_festival", {
     method: "POST",
     body: bodyContent,
     headers: headersList,
   });
 
-  if (!response.ok) {
+  /*   if (!response.ok) {
+    // Log the status and full response for debugging
+    console.error(`Error: ${response.status}`);
+    const errorDetails = await response.json();
+    console.error("Error details:", errorDetails);
+    throw new Error("Failed to add booking"); */
+  /*   } */
+
+  let data = await response.json();
+
+  return data;
+}
+
+export async function addReservation(info) {
+  let headersList = {
+    Accept: "application/json",
+    apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    prefer: "return=representation",
+    "Content-Type": "application/json",
+  };
+
+  const getId = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/form_foo_festival?userid=eq." + info.userid, {
+    headers: headersList,
+  });
+  const idData = await getId.json();
+  const userId = idData[0].userid;
+
+  let bodyContent = JSON.stringify({
+    userid: userId,
+    camp: info.camp,
+    regtickets: info.regtickets,
+    viptickets: info.viptickets,
+    tent2pers: info.tent2pers,
+    tent3pers: info.trent3pers,
+    greencamp: info.greencamp,
+  });
+
+  let response = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/foo_festival_bookings", {
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
+  });
+
+  /*   if (!response.ok) {
     // Log the status and full response for debugging
     console.error(`Error: ${response.status}`);
     const errorDetails = await response.json();
     console.error("Error details:", errorDetails);
     throw new Error("Failed to add booking");
-  }
+  } */
 
   let data = await response.json();
 
   return data;
+}
+
+export async function setReservation(reservationId) {
+  const response = await fetch(endPoint + "fullfill-reservation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: reservationId.id,
+    }),
+  });
+  return await response.json();
 }
