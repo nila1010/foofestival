@@ -4,6 +4,7 @@ import ChooseTents from "@/components/ChooseTents";
 import FormTicket from "@/components/FormTicket";
 import Heading from "@/components/Headings";
 import HeroComponent from "@/components/HeroComponent";
+import SummeryTicket from "@/components/SummeryTicket";
 import TicketCard from "@/components/TicketCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -217,7 +218,16 @@ export default function Ticket() {
                   />
                 </div>
               )}
-              {page === 4 && <div>Summery</div>}
+              {page === 4 && (
+                <div className="mt-5">
+                  <Heading
+                    as="h2"
+                    size="lg">
+                    Summery personal information
+                  </Heading>
+                  <SummeryTicket info={info} />
+                </div>
+              )}
             </article>
             <article className="bg-textprim text-bgprim rounded-bl grid auto-rows-max justify-end pr-10">
               <Heading
@@ -251,7 +261,7 @@ export default function Ticket() {
               )}
               <p className="text-right">Fixed booking fee 99,-</p>
               <div className="flex gap-5 my-3 justify-end items-center">
-                {info && <Button variant="default">Payment</Button>}
+                {page === 4 && <Button variant="default">Payment</Button>}
                 <p className="font-bold text-right">
                   Total: <span>{totalPrice}</span>,-
                 </p>
