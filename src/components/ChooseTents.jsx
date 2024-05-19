@@ -3,7 +3,7 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 
-export default function ChooseTents({ regTickets, vipTickets, setTents, setPage }) {
+export default function ChooseTents({ regTickets, vipTickets, setTents, setPage, setBookingInfo }) {
   const [twoTent, setTwoTent] = useState(0);
   const [threeTent, setThreeTent] = useState(0);
   const [totalTents, setTotalTents] = useState(0);
@@ -46,6 +46,10 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage 
 
     setTents((o) => {
       return (o = { opt1: twoTent, opt2: threeTent });
+    });
+
+    setBookingInfo((o) => {
+      return { ...o, tent2pers: twoTent, tent3pers: threeTent };
     });
   }, [totalTents]);
 

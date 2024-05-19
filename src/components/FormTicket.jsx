@@ -5,7 +5,7 @@ import Heading from "./Headings";
 import { addBooking } from "@/lib/crud";
 import { useEffect, useState } from "react";
 
-export default function FormTicket({ vipTickets, regTickets, setInfo, setPage }) {
+export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, setBookingInfo }) {
   const [totalTickets, setTotalTickets] = useState();
 
   useEffect(() => {
@@ -38,7 +38,11 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage })
     });
 
     info.extrapersons = extraPersons;
-    /*  await addBooking(info); */
+    info.userid = self.crypto.randomUUID();
+    setBookingInfo((o) => {
+      return { ...o, userid: info.userid };
+    });
+    /* await addBooking(info); */
     setInfo(info);
   }
   return (
