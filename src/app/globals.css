@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    background: rgb(53, 2, 61);
+    background: radial-gradient(circle, rgba(53, 2, 61, 1) 0%, rgba(72, 9, 121, 1) 45%, rgba(148, 0, 255, 1) 100%);
+  }
   :root {
     /*FONTSIZE*/
     --step--1: clamp(0.8rem, 0.7403rem + 0.2548cqi, 0.9377rem);

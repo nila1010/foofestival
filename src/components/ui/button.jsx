@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const buttonVariants = cva("max-w-fit flex items-center justify-center whitespace-nowrap rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50", {
+const buttonVariants = cva("w-full flex items-center justify-center whitespace-nowrap rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50", {
   variants: {
     variant: {
       default: "relative z-[1] overflow-hidden text-textsecon before:bg-primary before:content-[''] before:w-full before:h-full before:absolute before:inset-0 before:z-[-2] after:z-[-1] after:content-[''] after:w-0 after:h-full after:absolute after:top-0 after:left-[-40%] after:skew-x-[50deg] after:bg-secondary after:transition-all after:ease-out after:duration-700 hover:text-primary hover:after:w-[200%]",

@@ -41,7 +41,7 @@ export default function Program() {
     setFullDay(convertToWeekDay(day));
   }, [day]);
 
-  const tableRef = useRef(null);
+  /*   const tableRef = useRef(null);
 
   useEffect(() => {
     const containerHeight = tableRef.current.clientHeight;
@@ -53,18 +53,19 @@ export default function Program() {
     const scrollToPosition = parseInt(scrollToRow * rowHeight - containerHeight / 2);
 
     tableRef.current.scrollTop = scrollToPosition;
-  }, [midgard]);
+  }, [midgard]); */
 
   return (
-    <section className="px-10 grid">
+    <section className="grid auto-rows-max mt-5 sm:mt-0">
       <Heading
         as="h1"
-        size="2xl"
-        customClass="justify-self-center mb-2">
+        size="3xl"
+        customClass="justify-self-center mb-5">
         Program
       </Heading>
       <div className="flex justify-center flex-wrap">
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("mon");
           }}
@@ -72,6 +73,7 @@ export default function Program() {
           Monday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("tue");
           }}
@@ -79,6 +81,7 @@ export default function Program() {
           Tuesday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("wed");
           }}
@@ -86,6 +89,7 @@ export default function Program() {
           Wednesday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("thu");
           }}
@@ -93,6 +97,7 @@ export default function Program() {
           Thursday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("fri");
           }}
@@ -100,6 +105,7 @@ export default function Program() {
           Friday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("sat");
           }}
@@ -107,6 +113,7 @@ export default function Program() {
           Saturday
         </Button>
         <Button
+          className="max-w-fit"
           onClick={() => {
             setDay("sun");
           }}
@@ -117,78 +124,71 @@ export default function Program() {
       <Heading
         as="h2"
         size="2xl"
-        customClass="justify-self-center py-10">
+        customClass="justify-self-center py-5">
         {fullDay}
       </Heading>
-      <div className="grid grid-cols-[100px,_repeat(auto-fit,_minmax(50px,_1fr))] border-b pb-3 gap-5 place-items-center">
+      <article className="grid grid-cols-1">
         <Heading
-          as="h2"
-          size="ld">
-          Time
-        </Heading>
-        <Heading
-          as="h2"
-          size="ld">
+          as="h3"
+          size="xl">
           Midgard
         </Heading>
+        <Separator />
+        <div className="overflow-scroll">
+          <div className="flex">
+            {midgard.map((act) => {
+              return (
+                act.act !== "break" && (
+                  <CardProgram
+                    key={act.logo}
+                    band={act}
+                  />
+                )
+              );
+            })}
+          </div>
+        </div>
         <Heading
-          as="h2"
-          size="ld">
+          customClass="mt-5"
+          as="h3"
+          size="xl">
           Vanaheim
         </Heading>
+        <Separator />
+        <div className="overflow-scroll">
+          <div className="flex">
+            {vanaheim.map((act) => {
+              return (
+                act.act !== "break" && (
+                  <CardProgram
+                    key={act.logo}
+                    band={act}
+                  />
+                )
+              );
+            })}
+          </div>
+        </div>
         <Heading
-          as="h2"
-          size="ld">
+          customClass="mt-5"
+          as="h3"
+          size="xl">
           Jotunheim
         </Heading>
-      </div>
-      <article
-        ref={tableRef}
-        className="h-[600px] overflow-scroll grid grid-cols-[100px,_repeat(auto-fit,_minmax(50px,_1fr))] text-center">
-        <div>
-          {midgard.map((time) => {
-            return (
-              <>
-                <div
-                  key={time.start}
-                  className="h-[200px] py-3 grid">
-                  <p className="">{time.start}</p>
-                </div>
-                <Separator className="self-end" />
-              </>
-            );
-          })}
-        </div>
-        <div>
-          {midgard.map((act) => {
-            return (
-              <CardProgram
-                key={act.logo}
-                band={act}
-              />
-            );
-          })}
-        </div>
-        <div>
-          {vanaheim.map((act) => {
-            return (
-              <CardProgram
-                key={act.logo}
-                band={act}
-              />
-            );
-          })}
-        </div>
-
-        <div>
-          {jotunheim.map((act) => {
-            return (
-              <CardProgram
-                key={act.logo}
-                band={act}
-              />
-            );
-          })}
+        <Separator />
+        <div className="overflow-scroll">
+          <div className="flex">
+            {jotunheim.map((act) => {
+              return (
+                act.act !== "break" && (
+                  <CardProgram
+                    key={act.logo}
+                    band={act}
+                  />
+                )
+              );
+            })}
+          </div>
         </div>
       </article>
     </section>

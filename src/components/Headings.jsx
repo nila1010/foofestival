@@ -12,11 +12,11 @@ export default function Heading({ children, as = "h1", style = "none", customCla
   };
 
   const headingSize = {
-    sm: "text-sm",
-    md: "text-md",
-    lg: "text-lg",
+    sm: "text-sm leading-tight",
+    md: "text-md leading-tight",
+    lg: "text-lg leading-tight",
     xl: "text-xl leading-tight",
-    "2xl": "text-2xl",
+    "2xl": "text-2xl leading-tight",
     "3xl": "text-3xl leading-tight",
   };
 

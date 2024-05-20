@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function ArtistListStyle({ oneArtist, i }) {
   let style = "";
   if (i <= 10) {
@@ -11,14 +12,29 @@ export default function ArtistListStyle({ oneArtist, i }) {
   return (
     <>
       <li
-        className={`${style}`}
+        className={`${style} flex gap-5`}
         style={{
-          marginBlockEnd: i === 10 || i === 19 ? "1.5rem" : "",
-          flexBasis: i === 10 || i === 19 ? "100%" : "",
-        }}
-      >
+          display: i > 50 ? "none" : "",
+        }}>
         {oneArtist.name}
+        {i < 10 && (
+          <Image
+            src="/star.svg"
+            alt="spacer star"
+            width={20}
+            height={20}
+          />
+        )}
+        {i > 10 && i < 50 && (
+          <Image
+            src="/star.svg"
+            alt="spacer star"
+            width={10}
+            height={10}
+          />
+        )}
       </li>
+      {(i === 10 || i === 19) && <div style={{ height: "1.5rem", width: "100%" }} />}
     </>
   );
 }

@@ -83,16 +83,9 @@ export default function Ticket() {
   }, [resId]);
 
   return (
-    <section>
+    <section className="mt-5 sm:mt-0">
       {page === 0 && (
         <section className="grid place-items-center">
-          <HeroComponent
-            imgPath="/img/headerindex.png"
-            btnText="Program"
-            btnLink="/program"
-            btn2Text="Artists"
-            btn2Link="/artists"
-          />
           <Heading
             as="h1"
             size="2xl">

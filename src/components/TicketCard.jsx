@@ -51,6 +51,7 @@ export default function TicketCard({ title, price, description, label, inputId, 
         className=" max-w-16 text-center mt-3 text-md"
       />
       <Button
+        className="max-w-fit"
         onClick={setValue}
         variant="default">
         Buy ticket
