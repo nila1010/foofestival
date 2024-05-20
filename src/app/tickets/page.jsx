@@ -2,6 +2,7 @@
 import CampsiteCard from "@/components/CampsiteCard";
 import ChooseTents from "@/components/ChooseTents";
 import ConfirmationTicket from "@/components/ConfirmationTicket";
+import CountdownTimer from "@/components/CountdownTimer";
 import FormTicket from "@/components/FormTicket";
 import Heading from "@/components/Headings";
 import HeroComponent from "@/components/HeroComponent";
@@ -27,11 +28,26 @@ export default function Ticket() {
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
+  const [timeOut, setTimeOut] = useState(false);
 
   async function getAvailableSpots() {
     const spots = await getSpots();
     setAvailableSpots(spots);
   }
+
+  useEffect(() => {
+    if (timeOut) {
+      setRegTickets(0);
+      setVipTickets(0);
+      setCampSitePick();
+      setTotalPrice(99);
+      setResId();
+      setInfo();
+      setGreenOpt(false);
+      setTents();
+      setBookingInfo({});
+    }
+  }, [timeOut]);
 
   useEffect(() => {
     setTotalTickets(() => {
@@ -107,13 +123,17 @@ export default function Ticket() {
           </div>
         </section>
       )}
-      {page >= 1 && page < 6 && (
+      {page >= 1 && page < 6 && !timeOut && (
         <section>
-          <ol className="bg-textprim text-bgprim flex gap-3 justify-end px-10 py-10">
-            <li>1 Shop</li>
-            <li>2 Checkout</li>
-            <li>3 Payment</li>
-          </ol>
+          <div className={`bg-textprim flex ${resId ? "justify-between" : "justify-end"} items-center`}>
+            {resId && <CountdownTimer setTimeOut={setTimeOut} />}
+            <ol className="text-bgprim flex gap-3 px-10 py-10">
+              <li>1 Shop</li>
+              <li>2 Checkout</li>
+              <li>3 Payment</li>
+            </ol>
+          </div>
+
           <section className="grid grid-cols-[2fr_1fr] gap-10">
             <article className="ml-10">
               <ol className="flex gap-5 py-5">
@@ -311,6 +331,7 @@ export default function Ticket() {
           btnText="See program"
         />
       )}
+      {timeOut && <div>Timeout</div>}
     </section>
   );
 }
