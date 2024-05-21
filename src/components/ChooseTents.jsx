@@ -55,8 +55,8 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
 
   return (
     <>
-      <div className="flex flex-wrap gap-x-5">
-        <div className="flex">
+      <div className="flex flex-wrap gap-x-10">
+        <div className="flex items-center">
           <Button
             onClick={() => {
               setTwoTent((o) => {
@@ -68,11 +68,11 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               });
             }}
             variant="ghost"
-            className="self-end">
+            className="self-end w-fit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
+              width="30"
+              height="30"
               fill="currentColor"
               className="bi bi-dash-square"
               viewBox="0 0 16 16">
@@ -80,7 +80,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
             </svg>
           </Button>
-          <div className="grid justify-items-center ml-[-20px]">
+          <div className="grid justify-items-center ml-[-40px]">
             <Label
               htmlFor="2person"
               className="text-md mb-3">
@@ -103,11 +103,11 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
                 setTwoTent((o) => o + 1);
               }}
               variant="ghost"
-              className="self-end ml-[-20px]">
+              className="self-end ml-[-40px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
+                width="30"
+                height="30"
                 fill="currentColor"
                 className="bi bi-plus-square"
                 viewBox="0 0 16 16">
@@ -130,11 +130,11 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               });
             }}
             variant="ghost"
-            className="self-end">
+            className="self-end w-fit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
+              width="30"
+              height="30"
               fill="currentColor"
               className="bi bi-dash-square"
               viewBox="0 0 16 16">
@@ -142,10 +142,10 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
             </svg>
           </Button>
-          <div className="grid justify-items-center ml-[-20px]">
+          <div className="grid justify-items-center ml-[-40px]">
             <Label
               htmlFor="3person"
-              className="text-md mb-3">
+              className="text-md mb-3 w-fit">
               3 persons tent 399,-
               <p className="text-sm font-thin text-center">price per tent</p>
             </Label>
@@ -166,11 +166,11 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
                 setThreeTent((o) => o + 1);
               }}
               variant="ghost"
-              className="self-end ml-[-20px]">
+              className="self-end ml-[-40px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
+                width="30"
+                height="30"
                 fill="currentColor"
                 className="bi bi-plus-square"
                 viewBox="0 0 16 16">
@@ -183,7 +183,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
       </div>
       <Button
         variant="defaultline"
-        className="mt-10"
+        className="mt-10 w-fit"
         onClick={() => {
           setPage(3);
         }}>

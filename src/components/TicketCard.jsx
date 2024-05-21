@@ -37,25 +37,27 @@ export default function TicketCard({ title, price, description, label, inputId, 
         </Heading>
       </div>
       <p className="max-w-[25ch] text-center">{description}</p>
-      <Label
-        htmlFor={inputId}
-        className="sr-only">
-        {label}
-      </Label>
-      <Input
-        ref={inputValue}
-        type="text"
-        inputMode="numeric"
-        placeholder="0"
-        id={inputId}
-        className=" max-w-16 text-center mt-3 text-md"
-      />
-      <Button
-        className="max-w-fit"
-        onClick={setValue}
-        variant="default">
-        Buy ticket
-      </Button>
+      <div className="flex items-center gap-5">
+        <Button
+          className="max-w-fit"
+          onClick={setValue}
+          variant="default">
+          Buy ticket
+        </Button>
+        <Label
+          htmlFor={inputId}
+          className="sr-only">
+          {label}
+        </Label>
+        <Input
+          ref={inputValue}
+          type="text"
+          inputMode="numeric"
+          placeholder="0"
+          id={inputId}
+          className=" max-w-16 text-center text-md"
+        />
+      </div>
     </article>
   );
 }

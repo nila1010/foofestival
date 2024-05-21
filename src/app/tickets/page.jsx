@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { getSpots } from "@/lib/crud";
 import { useState, useEffect } from "react";
 export default function Ticket() {
-  const [regTickets, setRegTickets] = useState(0);
+  const [regTickets, setRegTickets] = useState(3);
   const [vipTickets, setVipTickets] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState();
@@ -24,7 +24,7 @@ export default function Ticket() {
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(2);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
@@ -148,6 +148,7 @@ export default function Ticket() {
                     <div className="flex gap-5 flex-wrap mt-5">
                       {availableSpots[0].available >= totalTickets && (
                         <CampsiteCard
+                          imgPath="/img/campsite.png"
                           setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
@@ -160,6 +161,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[1].available >= totalTickets && (
                         <CampsiteCard
+                          imgPath="/img/campsite2.png"
                           setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
@@ -172,6 +174,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[2].available >= totalTickets && (
                         <CampsiteCard
+                          imgPath="/img/campsite3.png"
                           setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
@@ -184,6 +187,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[3].available >= totalTickets && (
                         <CampsiteCard
+                          imgPath="/img/campsite4.png"
                           setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
@@ -196,6 +200,7 @@ export default function Ticket() {
                       )}
                       {availableSpots[4].available >= totalTickets && (
                         <CampsiteCard
+                          imgPath="/img/campsite2.png"
                           setBookingInfo={setBookingInfo}
                           setPage={setPage}
                           setResId={setResId}
