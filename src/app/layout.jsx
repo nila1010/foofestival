@@ -13,12 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${glory.className} grid grid-cols-1 sm:grid-cols-[1fr_10fr_1fr] font-light text-md text-textprim h-[100svh] overflow-auto`}>
-        <header className="relative h-[48px] z-10 sm:py-10 pr-5 sm:order-1 sm:h-[100svh]">
+      <body className={`${glory.className} font-light text-md text-textprim bg-transparent `}>
+        <header className="fixed right-0 h-[48px] z-20 sm:py-10 pr-5 sm:order-1 sm:h-[100svh]">
           <Navigation />
         </header>
-        <main className="overflow-auto p-5 sm:p-10">{children}</main>
-        <aside className=" p-3 hidden sm:grid pt-10 max-h-[100svh] -order-1">
+        <aside className="z-10 sm:fixed p-3 hidden sm:grid pt-10 max-h-[100svh] gap-14">
           <p className="font-bold text-xl md:text-2xl lg:text-3xl [writing-mode:vertical-lr] mx-auto">FooFestival</p>
           <p className=" font-semibold text-lg [writing-mode:vertical-lr] mx-auto">All year festival</p>{" "}
           <Image
@@ -28,9 +27,18 @@ export default function RootLayout({ children }) {
             height={200}
             alt="festival logo"></Image>
         </aside>
-        <footer className="order-2">
-          <p>Her er footter</p>
-        </footer>
+        <main className="grid h-[100svh] overflow-auto">
+          <Image
+            src="/bggradient.svg"
+            width={1920}
+            height={1080}
+            alt="bagground image"
+            className="row-start-1 col-start-1 object-cover self-stretch pulseanimation"
+          />
+          <div className="row-start-1 col-start-1 p-5 sm:py-10 sm:pl-[135px] sm:pr-64 z-10">{children}</div>
+        </main>
+
+        <footer></footer>
       </body>
     </html>
   );
