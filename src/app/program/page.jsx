@@ -138,12 +138,10 @@ export default function Program() {
           <div className="flex">
             {midgard.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
@@ -159,12 +157,10 @@ export default function Program() {
           <div className="flex">
             {vanaheim.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
@@ -180,12 +176,10 @@ export default function Program() {
           <div className="flex">
             {jotunheim.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
