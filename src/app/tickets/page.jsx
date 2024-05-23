@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { getSpots } from "@/lib/crud";
 import { useState, useEffect } from "react";
 export default function Ticket() {
-  const [regTickets, setRegTickets] = useState(3);
+  const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState();
@@ -24,7 +24,7 @@ export default function Ticket() {
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
