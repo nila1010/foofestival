@@ -41,27 +41,40 @@ export default function Page() {
   }, []);
 
   if (filteredArtists) {
-    filtered = artists.filter((artist) => artist.genre === filteredArtists);
+    if (filteredArtists === "favorits") {
+      filtered = artists.filter((artist) => userLiked.includes(artist.name));
+    } else {
+      filtered = artists.filter((artist) => artist.genre === filteredArtists);
+    }
+    if (filteredArtists === "showall") {
+      filtered = artists;
+    } else {
+      filtered = artists.filter((artist) => artist.genre === filteredArtists);
+    }
   }
 
   return (
-    <section>
-      <HeroComponent imgPath="/img/artistheader.png" btnText="But tickets" btnLink="/tickets" />
-      <article className="grid place-items-center">
-        <Heading as="h1" size="2xl">
-          Artists
-        </Heading>
-        <p className="max-w-prose text-center">Prepare to be captivated by a lineup of extraordinary artists who will ignite the stage with their talent and passion. From chart-topping headliners to emerging indie sensations, our diverse roster promises something for every musical palate.</p>
-      </article>
-      <div className="ml-10 mt-10">
+    <section className="grid justify-center mt-5 sm:block sm:mt-0">
+      <Heading
+        customClass="mx-auto"
+        as="h1"
+        size="2xl">
+        Artists
+      </Heading>
+
+      <div className="mt-10">
         <Select onValueChange={setFilteredArtists}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select genre" />
           </SelectTrigger>
           <SelectContent>
+            <SelectItem value={"showall"}>Show all</SelectItem>
+            <SelectItem value={"favorits"}>Favorits</SelectItem>
             {genres.map((oneGenre) => {
               return (
-                <SelectItem key={oneGenre} value={oneGenre}>
+                <SelectItem
+                  key={oneGenre}
+                  value={oneGenre}>
                   {oneGenre}
                 </SelectItem>
               );
@@ -70,7 +83,7 @@ export default function Page() {
         </Select>
       </div>
 
-      <section className="px-10 mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5">
+      <section className="mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5">
         {filtered.map((oneArtist) => {
           return (
             <Card key={oneArtist.name}>
@@ -82,13 +95,26 @@ export default function Page() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Image className="rounded w-full object-cover aspect-video" src={!oneArtist.logo.startsWith("https") ? `http://localhost:8080/logos/${oneArtist.logo}` : oneArtist.logo} height={100} width={100} alt="logo of the artist" />
+                <Image
+                  className="rounded w-full object-cover aspect-video"
+                  src={!oneArtist.logo.startsWith("https") ? `http://localhost:8080/logos/${oneArtist.logo}` : oneArtist.logo}
+                  height={100}
+                  width={100}
+                  alt="logo of the artist"
+                />
               </CardContent>
-              <CardFooter>
-                <Link prefetch={false} href={`/artists/${oneArtist.slug}`} className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2`}>
+              <CardFooter className="flex">
+                <Link
+                  prefetch={false}
+                  href={`/artists/${oneArtist.slug}`}
+                  className={`${buttonVariants({ variant: "link", size: "md" })} mb-6 mt-2 max-w-fit`}>
                   Read about artist
                 </Link>
-                <HeartRadioBtn setLike={setLike} oneArtist={oneArtist.name} check={userLiked.filter((one) => one === oneArtist.name)} />
+                <HeartRadioBtn
+                  setLike={setLike}
+                  oneArtist={oneArtist.name}
+                  check={userLiked.filter((one) => one === oneArtist.name)}
+                />
               </CardFooter>
             </Card>
           );

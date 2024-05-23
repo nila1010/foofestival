@@ -16,14 +16,14 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
   }, [reservate]);
   return (
     <div>
-      {" "}
       <p>Credit card</p>
       <Button
         onClick={() => {
           setReservate(true);
         }}
         variant="defaultline"
-        size="lg">
+        size="lg"
+        className="w-fit">
         Confirm booking
       </Button>
     </div>

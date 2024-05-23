@@ -1,11 +1,23 @@
+"use client";
+import { useState } from "react";
+import Hamburger from "hamburger-react";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import Burger from "./Burger";
-export default function Navigation() {
+
+import "animate.css";
+
+function Burger() {
+  const [isOpen, setOpen] = useState(false);
+
+  function closeMenu() {
+    setOpen(false);
+  }
   return (
-    <section className="flex justify-between items-center sm:py-2">
-      <nav>
-        <ul className="hidden gap-5 sm:grid">
+    <>
+      {isOpen && (
+        <ul
+          onClick={closeMenu}
+          className="absolute w-full top-8 justify-end bg-backgound-color-secondary grid gap-2 pt-10 px-8 pb-12 rounded-b animate__bounceInDown animate__animated">
           <li>
             <Link
               href="/tickets"
@@ -42,11 +54,16 @@ export default function Navigation() {
             </Link>
           </li>
         </ul>
-        <div className="flex w-[100svw] items-center justify-between px-5 py-2 bg-[#6D15C5] sm:hidden">
-          <p className="font-semibold text-2xl">FooFestival</p>
-          <Burger />
-        </div>
-      </nav>
-    </section>
+      )}
+
+      <Hamburger
+        size={40}
+        color={"oklch(93.114% 0.19848 123.3)"}
+        toggled={isOpen}
+        toggle={setOpen}
+      />
+    </>
   );
 }
+
+export default Burger;

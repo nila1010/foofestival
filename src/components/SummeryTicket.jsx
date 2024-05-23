@@ -1,6 +1,7 @@
 import Heading from "./Headings";
 
 export default function SummeryTicket({ info }) {
+  console.log(info.extrapersons);
   return (
     <article>
       <Heading
@@ -27,8 +28,8 @@ export default function SummeryTicket({ info }) {
             customClass="mt-3">
             Extra persons
           </Heading>
-          {info.extrapersons.map((person) => {
-            return <p key={person}>Name: {person}</p>;
+          {info.extrapersons.map((person, i) => {
+            return i >= 1 && <p key={person}>Name: {person}</p>;
           })}
         </div>
       )}

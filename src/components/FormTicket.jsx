@@ -112,22 +112,24 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
           </Heading>
           {totalTickets.map((nu, i) => {
             return (
-              <div key={i}>
-                <Label htmlFor={`form_extraname${i}`}>Extra person full name</Label>
-                <Input
-                  className="max-w-80"
-                  type="text"
-                  id={`form_extraname${i}`}
-                  name={`extraname${i}`}
-                />
-              </div>
+              i >= 1 && (
+                <div key={i}>
+                  <Label htmlFor={`form_extraname${i}`}>Extra person full name</Label>
+                  <Input
+                    className="max-w-80"
+                    type="text"
+                    id={`form_extraname${i}`}
+                    name={`extraname${i}`}
+                  />
+                </div>
+              )
             );
           })}
         </div>
       )}
 
       <Button
-        className="mt-5"
+        className="mt-5 w-fit"
         variant="defaultline">
         Sumbit
       </Button>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getReservation } from "@/lib/crud";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-export default function CampsiteCard({ title, description, spots, setCampSitePick, numOfTickets, setResId, setPage, setBookingInfo }) {
+export default function CampsiteCard({ title, description, spots, setCampSitePick, numOfTickets, setResId, setPage, setBookingInfo, imgPath }) {
   const [site, setSite] = useState();
 
   const btnStyle = "mx-auto max-h-[50px] max-w-fit rounded px-4 relative z-[1] overflow-hidden text-textsecon before:bg-primary before:content-[''] before:w-full before:h-full before:absolute before:inset-0 before:z-[-2] after:z-[-1] after:content-[''] after:w-0 after:h-full after:absolute after:top-0 after:left-[-40%] after:skew-x-[50deg] after:bg-secondary after:transition-all after:ease-out after:duration-700 hover:text-primary hover:after:w-[200%]";
@@ -42,7 +42,7 @@ export default function CampsiteCard({ title, description, spots, setCampSitePic
     <article className="grid rounded max-w-fit">
       <Image
         className="col-start-1 row-start-1"
-        src="/img/campsite.png"
+        src={imgPath}
         width={228}
         height={494}
         alt="Picture of the campesite"></Image>
