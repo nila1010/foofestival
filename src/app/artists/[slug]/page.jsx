@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
   const fetchData = await getData("bands");
   const filterData = fetchData.filter((oneBand) => oneBand.slug === slug);
   const data = filterData[0];
-  /*   if (!data) return notFound(); */
+  if (!data) return NotFound();
   return {
     title: `Foofestival - ${data.name}`,
   };
@@ -41,7 +41,7 @@ export default async function OneBand({ params }) {
     sun: "Sunday",
   };
 
-  /*  if (!data) return notFound();  */
+  if (!data) return NotFound();
 
   return (
     <section className="px-10">
