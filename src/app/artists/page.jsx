@@ -3,11 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import HeroComponent from "@/components/HeroComponent";
 import Heading from "@/components/Headings";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { addLikes, getData, getLikes } from "@/lib/crud";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import HeartRadioBtn from "@/components/HeartRadioBtn";
 
 export default function Page() {
@@ -61,6 +60,7 @@ export default function Page() {
         size="2xl">
         Artists
       </Heading>
+      <p className="text-center w-[65ch] mx-auto">Here you find the full list of artists, and you can choose to login and save your favorit artists.</p>
 
       <div className="mt-10">
         <Select onValueChange={setFilteredArtists}>

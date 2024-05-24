@@ -1,6 +1,6 @@
 "use client";
 import combinedData from "@/lib/combineData";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Heading from "@/components/Headings";
 import { Button } from "@/components/ui/button";
 import CardProgram from "@/components/CardProgram";
@@ -12,8 +12,6 @@ export default function Program() {
   const [jotunheim, setJotunheim] = useState([]);
   const [day, setDay] = useState("mon");
   const [fullDay, setFullDay] = useState("Monday");
-  const date = new Date();
-  const hour = date.getHours();
 
   async function fetchData(parm) {
     const data = await combinedData();

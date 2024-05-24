@@ -1,27 +1,34 @@
 import Link from "next/link";
 import Heading from "./Headings";
 import { buttonVariants } from "@/components/ui/button";
-export default function ConfirmationTicket({ btnLink, btnText }) {
+export default function ConfirmationTicket({ btnLink, btnText, btnLink2, btnText2 }) {
   return (
     <article className="grid justify-center gap-5">
       <Heading
         as="h1"
-        size="2xl"
-        customClass="max-w-[20ch] text-center">
+        size="xl"
+        customClass="max-w-[30ch] text-center mx-auto">
         Perfect, Your booking has been confirmed, and we are looking forward to see you
       </Heading>
       <p className="text-center">An confirmation email has been sent to your email, with practical information</p>
       <Heading
         as="h2"
         size="xl"
-        customClass="mx-auto mt-5">
-        Now its time to plan what you are gonna see
+        customClass="mx-auto mt-5 text-center">
+        Now its time to plan what you are gonna see or find your favorit artists.
       </Heading>
-      <Link
-        href={btnLink}
-        className={buttonVariants({ variant: "defaultline", size: "xl", className: "max-w-fit mx-auto" })}>
-        {btnText}
-      </Link>
+      <div className="flex flex-wrap gap-5 max-w-fit mx-auto">
+        <Link
+          href={btnLink}
+          className={buttonVariants({ variant: "defaultline", size: "xl", className: "max-w-fit mx-auto" })}>
+          {btnText}
+        </Link>
+        <Link
+          href={btnLink2}
+          className={buttonVariants({ variant: "defaultline", size: "xl", className: "max-w-fit mx-auto" })}>
+          {btnText2}
+        </Link>
+      </div>
     </article>
   );
 }

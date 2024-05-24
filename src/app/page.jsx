@@ -1,11 +1,8 @@
 import { buttonVariants } from "@/components/ui/button";
-
 import Link from "next/link";
-import Image from "next/image";
 import Heading from "@/components/Headings";
 import { getData } from "@/lib/crud";
 import ArtistListStyle from "@/components/ArtistListStyle";
-import HeroComponent from "@/components/HeroComponent";
 
 const data = await getData("bands");
 
@@ -39,7 +36,7 @@ export default function Home() {
         <Link
           href="/artists"
           className={`${buttonVariants({ variant: "defaultline", size: "lg" })} max-w-fit mt-5`}>
-          See all artist
+          See all artists
         </Link>
         <Heading
           customClass="mt-20"

@@ -9,6 +9,8 @@ export default async function combinedData() {
       schedule[stage][day].forEach((act) => {
         const matched = allArtist.find((slot) => slot.name === act.act);
         if (matched) {
+          act.venue = stage;
+          act.day = day;
           act.logo = matched.logo;
           act.bio = matched.bio;
           act.members = matched.members;
