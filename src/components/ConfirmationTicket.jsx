@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Heading from "./Headings";
 import { buttonVariants } from "@/components/ui/button";
 export default function ConfirmationTicket({ btnLink, btnText, btnLink2, btnText2 }) {

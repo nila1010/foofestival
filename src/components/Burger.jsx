@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 import "animate.css";
 

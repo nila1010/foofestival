@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Burger from "./Burger";
 export default function Navigation() {
   return (

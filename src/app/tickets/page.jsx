@@ -212,7 +212,7 @@ export default function Ticket() {
                 </div>
               )}
               {page === 3 && (
-                <div className="mt-5">
+                <div>
                   <Heading
                     as="h2"
                     size="2xl">
@@ -229,7 +229,7 @@ export default function Ticket() {
                 </div>
               )}
               {page === 5 && (
-                <div className="mt-5">
+                <div>
                   <Heading
                     as="h2"
                     size="2xl">

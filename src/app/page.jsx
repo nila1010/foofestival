@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Heading from "@/components/Headings";
 import { getData } from "@/lib/crud";
 import ArtistListStyle from "@/components/ArtistListStyle";
