@@ -19,8 +19,8 @@ export default function CountdownTimer({ setTimeOut }) {
   }, [seconds]);
 
   return (
-    <p className="text-bold text-lg text-bgprim pl-10">
-      Time to complete booking {displayMinutes}:{displaySeconds}
+    <p className="text-bold text-lg text-bgprim">
+      Time to complete {displayMinutes}:{displaySeconds}
     </p>
   );
 }

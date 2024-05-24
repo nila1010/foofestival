@@ -26,8 +26,7 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
     let info = {};
     let extraPersons = [];
     const formData = new FormData(e.target);
-    info.billingfirstname = formData.get("firstname");
-    info.billinglastname = formData.get("lastname");
+    info.billingfullname = formData.get("fullname");
     info.address = formData.get("addres");
     info.city = formData.get("city");
     info.zip = formData.get("postcode");
@@ -47,19 +46,12 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
   }
   return (
     <form onSubmit={handleSumbmit}>
-      <Label htmlFor="form_firstname">First name</Label>
+      <Label htmlFor="form_fullname">Full name</Label>
       <Input
-        className="max-w-60"
+        className="max-w-80"
         type="text"
-        id="form_firstname"
-        name="firstname"
-      />
-      <Label htmlFor="form_lastname">Last name</Label>
-      <Input
-        className="max-w-60"
-        type="text"
-        id="form_lastname"
-        name="lastname"
+        id="form_fullname"
+        name="fullname"
       />
       <Label htmlFor="form_address">Address</Label>
       <Input

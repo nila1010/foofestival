@@ -2,21 +2,16 @@
 import CampsiteCard from "@/components/CampsiteCard";
 import ChooseTents from "@/components/ChooseTents";
 import ConfirmationTicket from "@/components/ConfirmationTicket";
-import CountdownTimer from "@/components/CountdownTimer";
 import FormTicket from "@/components/FormTicket";
 import Heading from "@/components/Headings";
-import HeroComponent from "@/components/HeroComponent";
 import PaymentTicket from "@/components/PaymentTicket";
-import SummeryTicket from "@/components/SummeryTicket";
+import SummeryAside from "@/components/SummeryAside";
 import TicketCard from "@/components/TicketCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { getSpots } from "@/lib/crud";
 import { useState, useEffect } from "react";
+
 export default function Ticket() {
-  const [regTickets, setRegTickets] = useState(3);
+  const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState();
@@ -24,7 +19,7 @@ export default function Ticket() {
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
@@ -118,29 +113,13 @@ export default function Ticket() {
       )}
       {page >= 1 && page < 6 && !timeOut && (
         <section>
-          <div className={`bg-textprim flex ${resId ? "justify-between" : "justify-end"} items-center`}>
-            {resId && <CountdownTimer setTimeOut={setTimeOut} />}
-            <ol className="text-bgprim flex gap-3 px-10 py-10">
-              <li>1 Shop</li>
-              <li>2 Checkout</li>
-              <li>3 Payment</li>
-            </ol>
-          </div>
-
-          <section className="grid grid-cols-[2fr_1fr] gap-10">
-            <article className="ml-10">
-              <ol className="flex gap-5 py-5">
-                <li className={page < 3 ? "text-btntextsecon" : ""}>Accomidation</li>
-                <li className={page === 3 ? "text-btntextsecon" : ""}>Information</li>
-                <li className={page === 4 ? "text-btntextsecon" : ""}>Summery</li>
-                <li className={page === 5 ? "text-btntextsecon" : ""}>Payment</li>
-              </ol>
-              <Separator className="w-[80%]" />
+          <section className={`grid ${page === 4 || page === 5 ? "grid-cols-[1fr]" : "grid-cols-[3fr_2fr]"}  gap-10`}>
+            <article className={`${page === 4 ? "hidden" : "block"}`}>
               {page === 1 && (
-                <div className="mt-5">
+                <div>
                   <Heading
                     as="h2"
-                    size="lg">
+                    size="2xl">
                     Accomidation
                   </Heading>
                   <p>Choose a campesite</p>
@@ -216,10 +195,10 @@ export default function Ticket() {
                 </div>
               )}
               {page === 2 && (
-                <div className="mt-5">
+                <div>
                   <Heading
                     as="h2"
-                    size="lg">
+                    size="2xl">
                     Choose tents
                   </Heading>
                   <p className="mb-5">Numbers of tent must match tickets purchased</p>
@@ -236,7 +215,7 @@ export default function Ticket() {
                 <div className="mt-5">
                   <Heading
                     as="h2"
-                    size="lg">
+                    size="2xl">
                     Billing person
                   </Heading>
                   <p className="mb-5">Fill out the form to complete the resevation</p>
@@ -249,21 +228,11 @@ export default function Ticket() {
                   />
                 </div>
               )}
-              {page === 4 && (
-                <div className="mt-5">
-                  <Heading
-                    as="h2"
-                    size="lg">
-                    Summery personal information
-                  </Heading>
-                  <SummeryTicket info={info} />
-                </div>
-              )}
               {page === 5 && (
                 <div className="mt-5">
                   <Heading
                     as="h2"
-                    size="lg">
+                    size="2xl">
                     Payment
                   </Heading>
                   <PaymentTicket
@@ -274,52 +243,21 @@ export default function Ticket() {
                 </div>
               )}
             </article>
-            <article className="bg-textprim text-bgprim rounded-bl grid auto-rows-max justify-end pr-10">
-              <Heading
-                as="h2"
-                size="lg"
-                customClass="ml-auto">
-                Summery
-              </Heading>
-              <p className="text-right">
-                {regTickets > 0 ? "Regular ticket" : "VIP ticket"} x <span>{regTickets > 0 ? regTickets : vipTickets}</span>
-              </p>
-              <p className="text-right">
-                Campsite <span>{campSitePick}</span>
-              </p>
-              <div className="flex gap-5 justify-end items-center">
-                <Label htmlFor="option1">Green camping option 249,-</Label>
-                <Input
-                  onChange={() => {
-                    setGreenOpt((o) => (o = !o));
-                  }}
-                  className="h-9 w-fit"
-                  type="checkbox"
-                  name="option1"
-                  id="option1"></Input>
-              </div>
-              {tents && (
-                <div className="text-right">
-                  {tents.opt1 > 0 && <p>2 persons tent x {tents.opt1}</p>}
-                  {tents.opt2 > 0 && <p>3 persons tent x {tents.opt2}</p>}
-                </div>
-              )}
-              <p className="text-right">Fixed booking fee 99,-</p>
-              <div className="flex gap-5 my-3 justify-end items-center">
-                {page === 4 && (
-                  <Button
-                    onClick={() => {
-                      setPage(5);
-                    }}
-                    variant="default">
-                    Payment
-                  </Button>
-                )}
-                <p className="font-bold text-right">
-                  Total: <span>{totalPrice}</span>,-
-                </p>
-              </div>
-            </article>
+            {page !== 5 && (
+              <SummeryAside
+                resId={resId}
+                setTimeOut={setTimeOut}
+                regTickets={regTickets}
+                vipTickets={vipTickets}
+                campSitePick={campSitePick}
+                setGreenOpt={setGreenOpt}
+                tents={tents}
+                page={page}
+                setPage={setPage}
+                totalPrice={totalPrice}
+                info={info}
+              />
+            )}
           </section>
         </section>
       )}
@@ -327,6 +265,8 @@ export default function Ticket() {
         <ConfirmationTicket
           btnLink="/program"
           btnText="See program"
+          btnLink2="/artists"
+          btnText2="See artists"
         />
       )}
       {timeOut && <div>Timeout</div>}

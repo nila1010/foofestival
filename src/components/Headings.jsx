@@ -8,7 +8,7 @@ export default function Heading({ children, as = "h1", style = "none", customCla
   const headingStyle = {
     h1: "font-bold",
     h2: "font-medium",
-    h3: "font-bold",
+    h3: "font-medium",
   };
 
   const headingSize = {

@@ -74,7 +74,7 @@ export async function addBooking(info) {
   };
 
   let bodyContent = JSON.stringify({
-    billingfirstname: info.billingfirstname,
+    billingfullname: info.billingfullname,
     billinglastname: info.billinglastname,
     address: info.address,
     city: info.city,

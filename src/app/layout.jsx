@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${glory.className} font-light text-md text-textprim bg-transparent `}>
-        <header className="fixed right-0 h-[48px] z-20 sm:py-10 pr-5 sm:order-1 sm:h-[100svh]">
+        <header className="fixed right-0 h-[48px] z-10 sm:py-10 pr-5 sm:order-1 sm:h-[100svh]">
           <Navigation />
         </header>
         <aside className="z-10 sm:fixed p-3 hidden sm:grid pt-10 max-h-[100svh] gap-14">
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
             height={200}
             alt="festival logo"></Image>
         </aside>
-        <main className="grid h-[100svh] overflow-auto">
+        <main className="relative z-0 grid h-[100svh] overflow-auto">
           <Image
             src="/bggradient.svg"
             width={1920}
