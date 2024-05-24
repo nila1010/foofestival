@@ -53,14 +53,14 @@ export default function Page() {
   }
 
   return (
-    <section className="grid justify-center mt-5 sm:block sm:mt-0">
+    <section className="grid justify-center sm:block">
       <Heading
         customClass="mx-auto"
         as="h1"
         size="2xl">
         Artists
       </Heading>
-      <p className="text-center w-[65ch] mx-auto">Here you find the full list of artists, and you can choose to login and save your favorit artists.</p>
+      <p className="text-center max-w-[65ch] mx-auto">Here you find the full list of artists, and you can choose to login and save your favorit artists.</p>
 
       <div className="mt-10">
         <Select onValueChange={setFilteredArtists}>

@@ -12,6 +12,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        tb: "990px",
+      },
       fontSize: {
         sm: "var(--step--1)",
         md: "var(--step-0)",

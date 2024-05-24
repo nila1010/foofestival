@@ -44,7 +44,7 @@ export default async function OneBand({ params }) {
   if (!data) return NotFound();
 
   return (
-    <section className="px-10">
+    <section>
       <Heading
         as="h1"
         size="3xl">

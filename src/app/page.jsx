@@ -8,7 +8,7 @@ const data = await getData("bands");
 
 export default function Home() {
   return (
-    <section className="mt-5 sm:mt-0">
+    <section>
       <Heading
         as="h1"
         customClass="sr-only">

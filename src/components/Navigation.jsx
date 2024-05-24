@@ -5,7 +5,7 @@ export default function Navigation() {
   return (
     <section className="flex justify-between items-center sm:py-2">
       <nav>
-        <ul className="hidden gap-5 sm:grid">
+        <ul className="hidden gap-5 lg:grid">
           <li>
             <Link
               href="/tickets"
@@ -42,8 +42,8 @@ export default function Navigation() {
             </Link>
           </li>
         </ul>
-        <div className="flex w-[100svw] items-center justify-between px-5 py-2 bg-[#6D15C5] sm:hidden">
-          <p className="font-semibold text-2xl">FooFestival</p>
+        <div className="flex w-[100svw] items-center justify-between sm:justify-end px-5 py-2 lg:hidden">
+          <p className="font-semibold sm:hidden text-2xl">FooFestival</p>
           <Burger />
         </div>
       </nav>

@@ -78,7 +78,7 @@ export default function Ticket() {
   }, [resId]);
 
   return (
-    <section className="mt-5 sm:mt-0">
+    <section>
       {page === 0 && (
         <section className="grid place-items-center">
           <Heading
@@ -113,7 +113,7 @@ export default function Ticket() {
       )}
       {page >= 1 && page < 6 && !timeOut && (
         <section>
-          <section className={`grid ${page === 4 || page === 5 ? "grid-cols-[1fr]" : "grid-cols-[3fr_2fr]"}  gap-10`}>
+          <section className={`grid ${page === 4 || page === 5 ? "grid-cols-[1fr]" : "grid-cols-[1fr] md:grid-cols-[1fr_1fr] tb:grid-cols-[3fr_2fr]"}  gap-10`}>
             <article className={`${page === 4 ? "hidden" : "block"}`}>
               {page === 1 && (
                 <div>

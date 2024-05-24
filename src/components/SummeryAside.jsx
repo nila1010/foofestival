@@ -6,7 +6,7 @@ import Heading from "./Headings";
 export default function SummeryAside({ resId, setTimeOut, regTickets, vipTickets, campSitePick, setGreenOpt, tents, setPage, page, totalPrice, info }) {
   console.log(info);
   return (
-    <article className={`bg-textprim text-bgprim rounded-sm grid auto-rows-max p-5 ${page === 4 ? "grid-cols-2 justify-items-center" : ""} `}>
+    <article className={`bg-textprim text-bgprim rounded-sm grid auto-rows-max p-5 ${page === 4 ? "grid-cols-2 justify-items-center" : ""} mt-16 lg:mt-0 `}>
       <div>
         {resId && <CountdownTimer setTimeOut={setTimeOut} />}
         <Heading

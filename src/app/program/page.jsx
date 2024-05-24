@@ -54,7 +54,7 @@ export default function Program() {
   }, [midgard]); */
 
   return (
-    <section className="grid auto-rows-max mt-5 sm:mt-0">
+    <section className="grid auto-rows-max">
       <Heading
         as="h1"
         size="3xl"
@@ -136,12 +136,10 @@ export default function Program() {
           <div className="flex">
             {midgard.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
@@ -157,12 +155,10 @@ export default function Program() {
           <div className="flex">
             {vanaheim.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
@@ -178,12 +174,10 @@ export default function Program() {
           <div className="flex">
             {jotunheim.map((act) => {
               return (
-                act.act !== "break" && (
-                  <CardProgram
-                    key={act.logo}
-                    band={act}
-                  />
-                )
+                <CardProgram
+                  key={act.logo}
+                  band={act}
+                />
               );
             })}
           </div>
