@@ -43,7 +43,7 @@ export default function Navigation() {
           </li>
         </ul>
         <div className="flex w-[100svw] items-center justify-between sm:justify-end px-5 py-2 lg:hidden">
-          <p className="font-semibold sm:hidden text-2xl">FooFestival</p>
+          <p className="font-semibold sm:hidden text-2xl ml-5">FooFestival</p>
           <Burger />
         </div>
       </nav>
