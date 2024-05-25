@@ -14,7 +14,7 @@ export default function NotFound() {
       <p className="text-center max-w-[30ch] mb-10 mx-auto">Seams like tha page isnt available, try refresh or go back by pushing the button below</p>
       <Link
         href="/"
-        className={buttonVariants({ variant: "defaultline", size: "lg" })}>
+        className={buttonVariants({ variant: "defaultline", size: "lg", className: "max-w-fit mx-auto" })}>
         Refresh
       </Link>
     </section>

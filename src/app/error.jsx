@@ -15,7 +15,7 @@ export default function Error() {
       <p className="text-center max-w-[30ch] mb-10 mx-auto">We are sorry for the inconviniens, it might be a glitch. Try refresh the site click the button below</p>
       <Link
         href="/"
-        className={buttonVariants({ variant: "defaultline", size: "lg" })}>
+        className={buttonVariants({ variant: "defaultline", size: "lg", className: "max-w-fit mx-auto" })}>
         Refresh
       </Link>
     </section>
