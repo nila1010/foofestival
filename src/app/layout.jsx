@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
               alt="bagground image"
               className="row-start-1 col-start-1 object-cover self-stretch pulseanimation"
             />
-            <div className="row-start-1 col-start-1 p-5 lg:py-10 mt-10 sm:mt-0 sm:pl-[135px] lg:pr-64 z-10">{children}</div>
+            <div className="change row-start-1 col-start-1 p-5 lg:py-10 mt-10 lg:mt-0 sm:pl-[135px] lg:pr-64 z-10">{children}</div>
           </main>
 
           <footer></footer>

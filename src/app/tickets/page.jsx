@@ -116,7 +116,7 @@ export default function Ticket() {
           <section className={`grid ${page === 4 || page === 5 ? "grid-cols-[1fr]" : "grid-cols-[1fr] md:grid-cols-[1fr_1fr] tb:grid-cols-[3fr_2fr]"}  gap-10`}>
             <article className={`${page === 4 ? "hidden" : "block"}`}>
               {page === 1 && (
-                <div>
+                <div className={page === 1 ? "fade-in" : ""}>
                   <Heading
                     as="h2"
                     size="2xl">
@@ -195,7 +195,7 @@ export default function Ticket() {
                 </div>
               )}
               {page === 2 && (
-                <div>
+                <div className={`trans ${page === 2 ? "fade-in" : ""}`}>
                   <Heading
                     as="h2"
                     size="2xl">
@@ -212,7 +212,7 @@ export default function Ticket() {
                 </div>
               )}
               {page === 3 && (
-                <div>
+                <div className={page === 3 ? "fade-in" : ""}>
                   <Heading
                     as="h2"
                     size="2xl">
@@ -229,7 +229,7 @@ export default function Ticket() {
                 </div>
               )}
               {page === 5 && (
-                <div>
+                <div className={page === 5 ? "fade-in" : ""}>
                   <Heading
                     as="h2"
                     size="2xl">
@@ -244,30 +244,34 @@ export default function Ticket() {
               )}
             </article>
             {page !== 5 && (
-              <SummeryAside
-                resId={resId}
-                setTimeOut={setTimeOut}
-                regTickets={regTickets}
-                vipTickets={vipTickets}
-                campSitePick={campSitePick}
-                setGreenOpt={setGreenOpt}
-                tents={tents}
-                page={page}
-                setPage={setPage}
-                totalPrice={totalPrice}
-                info={info}
-              />
+              <div className={page !== 5 ? "fade-in" : ""}>
+                <SummeryAside
+                  resId={resId}
+                  setTimeOut={setTimeOut}
+                  regTickets={regTickets}
+                  vipTickets={vipTickets}
+                  campSitePick={campSitePick}
+                  setGreenOpt={setGreenOpt}
+                  tents={tents}
+                  page={page}
+                  setPage={setPage}
+                  totalPrice={totalPrice}
+                  info={info}
+                />
+              </div>
             )}
           </section>
         </section>
       )}
       {page === 6 && (
-        <ConfirmationTicket
-          btnLink="/program"
-          btnText="See program"
-          btnLink2="/artists"
-          btnText2="See artists"
-        />
+        <div className={page === 1 ? "fade-in" : ""}>
+          <ConfirmationTicket
+            btnLink="/program"
+            btnText="See program"
+            btnLink2="/artists"
+            btnText2="See artists"
+          />
+        </div>
       )}
       {timeOut && <div>Timeout</div>}
     </section>

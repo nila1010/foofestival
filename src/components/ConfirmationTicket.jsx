@@ -3,7 +3,7 @@ import Heading from "./Headings";
 import { buttonVariants } from "@/components/ui/button";
 export default function ConfirmationTicket({ btnLink, btnText, btnLink2, btnText2 }) {
   return (
-    <article className="grid justify-center gap-5">
+    <article className="grid justify-center gap-5 mt-10">
       <Heading
         as="h1"
         size="xl"
