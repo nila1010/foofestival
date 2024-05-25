@@ -124,7 +124,7 @@ export default function Ticket() {
                   </Heading>
                   <p>Choose a campesite</p>
                   {availableSpots && (
-                    <div className="flex gap-5 flex-wrap mt-5">
+                    <div className="flex gap-5 flex-wrap justify-center sm:justify-start mt-5">
                       {availableSpots[0].available >= totalTickets && (
                         <CampsiteCard
                           imgPath="/img/campsite.png"

@@ -55,7 +55,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
 
   return (
     <>
-      <div className="flex flex-wrap gap-x-10">
+      <div className="flex flex-wrap gap-x-10 justify-center sm:justify-start">
         <div className="flex items-center">
           <Button
             onClick={() => {
@@ -183,7 +183,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
       </div>
       <Button
         variant="defaultline"
-        className="mt-10 w-fit"
+        className="mt-10 w-fit mx-auto sm:mx-0"
         onClick={() => {
           setPage(3);
         }}>
