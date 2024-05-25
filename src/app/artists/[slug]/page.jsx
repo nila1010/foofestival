@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const data = filterData[0];
   if (!data) return NotFound();
   return {
-    title: `Foofestival - ${data.name}`,
+    title: `${data.name} - FooFestival, where the vibrant energy of youth converges with the electrifying beats"`,
   };
 }
 
