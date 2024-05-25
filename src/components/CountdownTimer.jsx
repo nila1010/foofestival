@@ -13,7 +13,7 @@ export default function CountdownTimer({ setTimeOut }) {
         setSeconds((o) => o - 1);
       }, 1000);
     } else {
-      /*  setTimeOut(true); */
+      /*   setTimeOut(true); */
       return clearTimeout(timer);
     }
   }, [seconds]);

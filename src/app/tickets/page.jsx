@@ -7,6 +7,7 @@ import Heading from "@/components/Headings";
 import PaymentTicket from "@/components/PaymentTicket";
 import SummeryAside from "@/components/SummeryAside";
 import TicketCard from "@/components/TicketCard";
+import TimeOut from "@/components/TimeOut";
 import { getSpots } from "@/lib/crud";
 import { useState, useEffect } from "react";
 
@@ -273,7 +274,14 @@ export default function Ticket() {
           />
         </div>
       )}
-      {timeOut && <div>Timeout</div>}
+      {timeOut && (
+        <div className={timeOut ? "fade-in" : ""}>
+          <TimeOut
+            btnLink="/tickets"
+            btnText="Buy tickets"
+          />
+        </div>
+      )}
     </section>
   );
 }
