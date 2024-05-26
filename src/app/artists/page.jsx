@@ -86,7 +86,9 @@ export default function Page() {
       <section className="mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5">
         {filtered.map((oneArtist) => {
           return (
-            <Card key={oneArtist.name}>
+            <Card
+              key={oneArtist.name}
+              className="max-w-[300px]">
               <CardHeader>
                 <CardTitle>{oneArtist.name}</CardTitle>
                 <CardDescription>
