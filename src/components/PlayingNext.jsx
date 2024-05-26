@@ -4,26 +4,27 @@ import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { buttonVariants } from "@/components/ui/button";
 
-export default async function PlayingNow() {
+export default async function PlayingNext() {
   const date = new Date();
   const hour = date.getHours();
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-  const liveHour = () => {
-    if (hour % 2 === 0) {
-      if (hour <= 9) {
-        return `0${hour}:00`;
+  const nextHour = () => {
+    const modifiedHour = hour + 2;
+    if (modifiedHour % 2 === 0) {
+      if (modifiedHour <= 9) {
+        return `0${modifiedHour}:00`;
       } else {
-        return `${hour}:00`;
+        return `${modifiedHour}:00`;
       }
     } else {
-      if (hour <= 9) {
-        const newHour = hour - 1;
+      if (modifiedHour <= 9) {
+        const newHour = modifiedHour - 1;
         return `0${newHour}:00`;
       } else {
-        const newHour = hour - 1;
+        const newHour = modifiedHour - 1;
         return `${newHour}:00`;
       }
     }
@@ -31,20 +32,20 @@ export default async function PlayingNow() {
 
   const fetchData = await combinedData();
 
-  const filterData = Object.entries(fetchData).map((venue) => {
-    const filtered = Object.entries(venue[1]).map((oneDay) => oneDay[1].filter((band) => band.start === liveHour() && band.day === dayNamesShort[liveDay]));
+  const playingNext = Object.entries(fetchData).map((venue) => {
+    const filtered = Object.entries(venue[1]).map((oneDay) => oneDay[1].filter((band) => band.start === nextHour() && band.day === dayNamesShort[liveDay]));
     return filtered;
   });
 
-  const data = filterData.flat(Infinity);
+  const data = playingNext.flat(Infinity);
 
   return (
     <section
       id="playingnow"
-      className="flex gap-5 flex-wrap justify-center mt-10">
+      className="flex gap-5 flex-wrap justify-center mt-5">
       {data.length === 0 ? (
         <div className="grid place-items-center">
-          <p>Noone is playing at the moment, so its beer time</p>
+          <p>Noone is playing next, so its beer time</p>
           <Image
             src="/beer.svg"
             alt="logo of a beer"

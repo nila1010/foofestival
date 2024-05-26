@@ -36,7 +36,7 @@ export default function Navigation() {
           </li>
           <li>
             <Link
-              href="/"
+              href="/#playingnow"
               className={`${buttonVariants({ variant: "defaultline", size: "lg" })}`}>
               Playing now
             </Link>

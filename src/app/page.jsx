@@ -4,6 +4,7 @@ import Heading from "@/components/Headings";
 import { getData } from "@/lib/crud";
 import ArtistListStyle from "@/components/ArtistListStyle";
 import PlayingNow from "@/components/PlayingNow";
+import PlayingNext from "@/components/PlayingNext";
 
 const data = await getData("bands");
 
@@ -46,6 +47,13 @@ export default function Home() {
           Playing now
         </Heading>
         <PlayingNow />
+        <Heading
+          customClass="mt-20"
+          as="h2"
+          size="2xl">
+          Playing next
+        </Heading>
+        <PlayingNext />
       </article>
     </section>
   );
