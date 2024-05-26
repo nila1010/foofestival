@@ -39,20 +39,6 @@ export default function Program() {
     setFullDay(convertToWeekDay(day));
   }, [day]);
 
-  /*   const tableRef = useRef(null);
-
-  useEffect(() => {
-    const containerHeight = tableRef.current.clientHeight;
-
-    const rowHeight = 200;
-
-    const scrollToRow = parseInt(hour / 2 + 1);
-
-    const scrollToPosition = parseInt(scrollToRow * rowHeight - containerHeight / 2);
-
-    tableRef.current.scrollTop = scrollToPosition;
-  }, [midgard]); */
-
   return (
     <section className="grid auto-rows-max">
       <Heading

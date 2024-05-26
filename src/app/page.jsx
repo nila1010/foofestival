@@ -3,6 +3,7 @@ import { Link } from "next-view-transitions";
 import Heading from "@/components/Headings";
 import { getData } from "@/lib/crud";
 import ArtistListStyle from "@/components/ArtistListStyle";
+import PlayingNow from "@/components/PlayingNow";
 
 const data = await getData("bands");
 
@@ -44,6 +45,7 @@ export default function Home() {
           size="3xl">
           Playing now
         </Heading>
+        <PlayingNow />
       </article>
     </section>
   );
