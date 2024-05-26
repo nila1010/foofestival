@@ -68,7 +68,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               });
             }}
             variant="ghost"
-            className="self-end w-fit">
+            className="self-end w-fit z-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -130,7 +130,7 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
               });
             }}
             variant="ghost"
-            className="self-end w-fit">
+            className="self-end w-fit z-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -181,14 +181,16 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
           )}
         </div>
       </div>
-      <Button
-        variant="defaultline"
-        className="mt-10 w-fit mx-auto sm:mx-0"
-        onClick={() => {
-          setPage(3);
-        }}>
-        Confirm choices
-      </Button>
+      {disAll && (
+        <Button
+          variant="defaultline"
+          className="mt-10 w-fit mx-auto sm:mx-0"
+          onClick={() => {
+            setPage(3);
+          }}>
+          Confirm choices
+        </Button>
+      )}
     </>
   );
 }

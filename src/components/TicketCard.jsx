@@ -2,23 +2,31 @@ import Heading from "./Headings";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function TicketCard({ title, price, description, label, inputId, setRegTickets, setVipTickets, setPage, setBookingInfo }) {
-  const inputValue = useRef();
-  function setValue() {
-    setPage(1);
-    const numTickets = inputValue.current.value;
-    if (title === "Regular ticket") {
-      setRegTickets((o) => (o = numTickets));
-      setBookingInfo((o) => {
-        return { ...o, regtickets: numTickets };
-      });
+  const [selectedTickets, setSelectedTickets] = useState();
+  const [error, setError] = useState(false);
+
+  function setValue(e) {
+    e.preventDefault();
+
+    if (!selectedTickets) {
+      setError(true);
     } else {
-      setVipTickets((o) => (o = numTickets));
-      setBookingInfo((o) => {
-        return { ...o, viptickets: numTickets };
-      });
+      setPage(1);
+
+      if (title === "Regular ticket") {
+        setRegTickets((o) => (o = selectedTickets));
+        setBookingInfo((o) => {
+          return { ...o, regtickets: selectedTickets };
+        });
+      } else {
+        setVipTickets((o) => (o = selectedTickets));
+        setBookingInfo((o) => {
+          return { ...o, viptickets: selectedTickets };
+        });
+      }
     }
   }
 
@@ -37,27 +45,30 @@ export default function TicketCard({ title, price, description, label, inputId, 
         </Heading>
       </div>
       <p className="max-w-[25ch] text-center">{description}</p>
-      <div className="flex items-center gap-5">
-        <Button
-          className="max-w-fit"
-          onClick={setValue}
-          variant="default">
-          Buy ticket
-        </Button>
-        <Label
-          htmlFor={inputId}
-          className="sr-only">
-          {label}
-        </Label>
-        <Input
-          ref={inputValue}
-          type="text"
-          inputMode="numeric"
-          placeholder="0"
-          id={inputId}
-          className=" max-w-16 text-center text-md"
-        />
-      </div>
+
+      <form onSubmit={setValue}>
+        <div className="flex items-center gap-5">
+          <Button
+            className="max-w-fit"
+            variant="default">
+            Buy ticket
+          </Button>
+          <Label
+            htmlFor={inputId}
+            className="sr-only">
+            {label}
+          </Label>
+          <Input
+            onChange={(e) => setSelectedTickets(e.target.value)}
+            type="text"
+            inputMode="numeric"
+            placeholder="0"
+            id={inputId}
+            className=" max-w-16 text-center text-md"
+          />
+        </div>
+        {error && <p className="mt-3 text-red-400">You need to select a no. of tickets</p>}
+      </form>
     </article>
   );
 }
