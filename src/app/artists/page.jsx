@@ -83,12 +83,12 @@ export default function Page() {
         </Select>
       </div>
 
-      <section className="mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5">
+      <section className="mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5 ">
         {filtered.map((oneArtist) => {
           return (
             <Card
               key={oneArtist.name}
-              className="max-w-[300px]">
+              className="max-w-[300px] artist-card-scroll">
               <CardHeader>
                 <CardTitle>{oneArtist.name}</CardTitle>
                 <CardDescription>

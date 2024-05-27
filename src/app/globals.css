@@ -163,3 +163,41 @@
     opacity: 1;
   }
 }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .artist-card-scroll {
+      animation: slide-in linear both;
+      animation-timeline: view();
+      animation-range: entry, exit;
+    }
+
+    @keyframes slide-in {
+      from {
+        scale: 0.8;
+        opacity: 0;
+      }
+      to {
+        scale: 1;
+        opacity: 1;
+      }
+    }
+    .program-card-scroll {
+      animation: reveal ease-in-out both;
+      animation-timeline: view(inline);
+      /*   animation-range: cover 0% cover 40%; */
+    }
+
+    @keyframes reveal {
+      from {
+        scale: 0.8;
+        rotatey: 45deg;
+      }
+      50% {
+        scale: 1;
+      }
+      to {
+        scale: 0.8;
+      }
+    }
+  }
+}

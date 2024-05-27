@@ -5,7 +5,7 @@ export default function CardProgram({ band }) {
   return (
     <>
       {band.act === "break" && (
-        <div className="h-[200px] min-w-[200px] grid place-items-center">
+        <div className="h-[200px] min-w-[200px] grid place-items-center program-card-scroll">
           <p className="-mt-1">
             {band.start}-{band.end}
           </p>
@@ -20,7 +20,7 @@ export default function CardProgram({ band }) {
       )}
       {band.act !== "break" && (
         <Link href={`/artists/${band.slug}`}>
-          <div className="h-[200px] min-w-[200px] grid place-items-center">
+          <div className="h-[200px] min-w-[200px] grid place-items-center program-card-scroll">
             <p>
               {band.start}-{band.end}
             </p>
