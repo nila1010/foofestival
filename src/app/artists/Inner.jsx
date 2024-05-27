@@ -9,10 +9,10 @@ import { addLikes } from "@/lib/crud";
 import { useState } from "react";
 import HeartRadioBtn from "@/components/HeartRadioBtn";
 
-export default function Inner({ data, liked }) {
+export default function Inner({ data, likes }) {
   const [artists, setArtists] = useState(data);
   const [filteredArtists, setFilteredArtists] = useState("");
-  const [userLiked, setUserLiked] = useState(liked);
+  const [userLiked, setUserLiked] = useState(likes);
 
   function setLike(parm) {
     setUserLiked((old) => {
