@@ -2,6 +2,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
   return (
     <section className="grid justify-center">
       <section className="mt-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-5">
