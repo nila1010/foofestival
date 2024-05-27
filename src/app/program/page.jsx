@@ -118,7 +118,7 @@ export default function Program() {
           Midgard
         </Heading>
         <Separator />
-        <div className="overflow-scroll">
+        <div className="overflow-auto">
           <div className="flex">
             {midgard.map((act) => {
               return (
@@ -137,7 +137,7 @@ export default function Program() {
           Vanaheim
         </Heading>
         <Separator />
-        <div className="overflow-scroll">
+        <div className="overflow-auto">
           <div className="flex">
             {vanaheim.map((act) => {
               return (
@@ -156,7 +156,7 @@ export default function Program() {
           Jotunheim
         </Heading>
         <Separator />
-        <div className="overflow-scroll">
+        <div className="overflow-auto">
           <div className="flex">
             {jotunheim.map((act) => {
               return (

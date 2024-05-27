@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           <main className="relative z-0 grid h-[100svh] overflow-y-auto overflow-x-hidden">
             <Image
               src="/bggradient.svg"
-              width={1920}
+              width={2620}
               height={1080}
               alt="bagground image"
               className="row-start-1 col-start-1 object-cover self-stretch pulseanimation"
