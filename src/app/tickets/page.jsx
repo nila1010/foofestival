@@ -277,7 +277,8 @@ export default function Ticket() {
       {timeOut && (
         <div className={timeOut ? "fade-in" : ""}>
           <TimeOut
-            btnLink="/tickets"
+            setTimeOut={setTimeOut}
+            setPage={setPage}
             btnText="Buy tickets"
           />
         </div>

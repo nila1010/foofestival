@@ -14,7 +14,7 @@ const buttonVariants = cva("w-full flex items-center justify-center whitespace-n
       destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
       outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
       secondary: "bg-secondary text-btntextsecon shadow-sm hover:bg-secondary/80",
-      ghost: "hover:text-btntextsecon",
+      ghost: "hover:scale-[1.2]",
       link: "text-primary underline-offset-4 hover:underline",
     },
     size: {

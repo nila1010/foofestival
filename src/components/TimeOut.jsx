@@ -1,8 +1,11 @@
 import Heading from "./Headings";
-import { Link } from "next-view-transitions";
-import { buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 
-export default function TimeOut({ btnLink, btnText }) {
+export default function TimeOut({ setTimeOut, setPage, btnText }) {
+  function resetBooking() {
+    setPage(0);
+    setTimeOut(false);
+  }
   return (
     <article className="grid justify-center gap-5 mt-10">
       <Heading
@@ -18,11 +21,13 @@ export default function TimeOut({ btnLink, btnText }) {
         Unfortunatly your reservations time has ran out. Please click on the butten below and try again.
       </Heading>
       <div className="flex flex-wrap gap-5 max-w-fit mx-auto">
-        <Link
-          href={btnLink}
-          className={buttonVariants({ variant: "defaultline", size: "xl", className: "max-w-fit mx-auto" })}>
+        <Button
+          onClick={resetBooking}
+          variant="defaultline"
+          size="xl"
+          className="max-w-fit mx-auto">
           {btnText}
-        </Link>
+        </Button>
       </div>
     </article>
   );
