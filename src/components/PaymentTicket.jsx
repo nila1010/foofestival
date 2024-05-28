@@ -39,7 +39,7 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
   }, [reservate]);
   return (
     <div>
-      <div>
+      <div className="flex gap-x-10 items-end flex-wrap">
         <div className="grid justify-start mt-5">
           <Cards
             number={state.number}
