@@ -54,14 +54,26 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
         type="text"
         id="form_fullname"
         name="fullname"
+        placeholder=" "
+        minLength="4"
+        pattern=".*\s+.*"
+        required
+        aria-errormessage="errname"
       />
+      <p className="errname error text-red-500">You need to enter your first and lastname</p>
       <Label htmlFor="form_address">Address</Label>
       <Input
         className="max-w-80"
         type="text"
         id="form_addres"
         name="addres"
+        minLength="4"
+        aria-errormessage="erraddress"
+        required
+        placeholder=" "
       />
+      <p className="erraddress error text-red-500">You need to enter your address</p>
+
       <div className="flex gap-5">
         <div>
           <Label htmlFor="form_city">City</Label>
@@ -70,7 +82,11 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
             type="text"
             id="form_city"
             name="city"
+            aria-errormessage="errcity"
+            required
+            placeholder=" "
           />
+          <p className="errcity error text-red-500">You need to enter your city</p>
         </div>
         <div>
           <Label htmlFor="form_postcode">Postcode</Label>
@@ -79,7 +95,12 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
             type="text"
             id="form_postcode"
             name="postcode"
+            aria-errormessage="errpostcode"
+            pattern="^\d+$"
+            required
+            placeholder=" "
           />
+          <p className="errpostcode error text-red-500">You need to enter your postcode</p>
         </div>
       </div>
       <Label htmlFor="form_email">Email</Label>
@@ -88,33 +109,48 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
         type="email"
         id="form_email"
         name="email"
+        aria-errormessage="erremail"
+        required
+        placeholder=" "
       />
+      <p className="erremail error text-red-500">You need to enter your email</p>
       <Label htmlFor="form_city">Phone</Label>
       <Input
         className="max-w-60"
         type="tel"
         id="form_phone"
         name="phone"
+        required
+        aria-errormessage="errtel"
+        pattern="^\d+$"
+        placeholder=" "
       />
+      <p className="errtel error text-red-500">You need to enter your phone number</p>
       {totalTickets && totalTickets.length > 1 && (
         <div>
           <Heading
             as="h3"
             size="lg"
             customClass="font-thin mt-5">
-            Extra persons names
+            Extra attendees
           </Heading>
           {totalTickets.map((nu, i) => {
             return (
               i >= 1 && (
                 <div key={i}>
-                  <Label htmlFor={`form_extraname${i}`}>Extra person full name</Label>
+                  <Label htmlFor={`form_extraname${i}`}>Extra attendees full name</Label>
                   <Input
                     className="max-w-80"
                     type="text"
                     id={`form_extraname${i}`}
                     name={`extraname${i}`}
+                    aria-errormessage={`errperson${i}`}
+                    required
+                    minLength="4"
+                    pattern=".*\s+.*"
+                    placeholder=" "
                   />
+                  <p className={`errperson${i} error text-red-500`}>You need to enter both first and last name</p>
                 </div>
               )
             );

@@ -201,3 +201,10 @@
     }
   }
 }
+.error {
+  display: none;
+}
+
+input:user-invalid:not(:placeholder-shown, :focus) + .error {
+  display: block;
+}
