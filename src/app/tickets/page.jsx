@@ -20,7 +20,7 @@ export default function Ticket() {
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(0);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
@@ -219,7 +219,7 @@ export default function Ticket() {
                     size="2xl">
                     Billing person
                   </Heading>
-                  <p className="mb-5">Fill out the form to complete the resevation</p>
+                  <p className="mb-2">Fill out the form to complete the resevation</p>
                   <FormTicket
                     setBookingInfo={setBookingInfo}
                     setPage={setPage}

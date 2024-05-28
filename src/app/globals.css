@@ -164,7 +164,7 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: scroll()) {
+  @supports (animation-timeline: view()) {
     .artist-card-scroll {
       animation: slide-in linear both;
       animation-timeline: view();
