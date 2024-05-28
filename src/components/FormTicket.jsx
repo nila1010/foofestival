@@ -45,7 +45,9 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
     setInfo(info);
   }
   return (
-    <form onSubmit={handleSumbmit}>
+    <form
+      onSubmit={handleSumbmit}
+      className="min-w-[300px">
       <Label htmlFor="form_fullname">Full name</Label>
       <Input
         className="max-w-80"

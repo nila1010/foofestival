@@ -20,7 +20,7 @@ export default function Ticket() {
   const [availableSpots, setAvailableSpots] = useState();
   const [resId, setResId] = useState();
   const [info, setInfo] = useState();
-  const [page, setPage] = useState(5);
+  const [page, setPage] = useState(3);
   const [greenOpt, setGreenOpt] = useState(false);
   const [tents, setTents] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
