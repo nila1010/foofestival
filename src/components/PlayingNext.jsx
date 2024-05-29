@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { buttonVariants } from "@/components/ui/button";
+import { endPoint } from "@/lib/crud";
 
 export default async function PlayingNext() {
   const date = new Date();
@@ -71,7 +72,7 @@ export default async function PlayingNext() {
               <CardContent>
                 <Image
                   className="rounded w-full object-cover aspect-video"
-                  src={!one.logo.startsWith("https") ? `http://localhost:8080/logos/${one.logo}` : one.logo}
+                  src={!one.logo.startsWith("https") ? `${endPoint}/logos/${one.logo}` : one.logo}
                   height={100}
                   width={100}
                   alt="logo of the artist"

@@ -1,7 +1,7 @@
-const endPoint = "http://localhost:8080/";
+export const endPoint = "https://water-efficacious-volleyball.glitch.me";
 
 export async function getData(parm) {
-  const res = await fetch(endPoint + parm);
+  const res = await fetch(endPoint + "/" + parm);
   return await res.json();
 }
 
@@ -47,7 +47,7 @@ export async function addLikes(parm, userId) {
 }
 
 export async function getReservation(title, spots) {
-  const response = await fetch(endPoint + "reserve-spot", {
+  const response = await fetch(endPoint + "/reserve-spot", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export async function getReservation(title, spots) {
 }
 
 export async function getSpots() {
-  const res = await fetch(endPoint + "available-spots");
+  const res = await fetch(endPoint + "/available-spots");
   return await res.json();
 }
 
@@ -148,7 +148,7 @@ export async function addReservation(info) {
 }
 
 export async function setReservation(reservationId) {
-  const response = await fetch(endPoint + "fullfill-reservation", {
+  const response = await fetch(endPoint + "/fullfill-reservation", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

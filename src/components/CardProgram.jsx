@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { endPoint } from "@/lib/crud";
 
 export default function CardProgram({ band }) {
   return (
@@ -27,7 +28,7 @@ export default function CardProgram({ band }) {
 
             <Image
               className="row-start-2 col-start-1 rounded object-cover aspect-square"
-              src={band.logo && !band.logo.startsWith("https") ? `http://localhost:8080/logos/${band.logo}` : band.logo}
+              src={band.logo && !band.logo.startsWith("https") ? `${endPoint}/logos/${band.logo}` : band.logo}
               alt="Picture of the band"
               width={140}
               height={140}

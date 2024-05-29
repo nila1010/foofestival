@@ -1,6 +1,6 @@
 import Heading from "@/components/Headings";
 import Image from "next/image";
-import { getData } from "@/lib/crud";
+import { endPoint, getData } from "@/lib/crud";
 import combinedData from "@/lib/combineData";
 
 export async function generateStaticParams() {
@@ -64,7 +64,7 @@ export default async function OneBand({ params }) {
       </div>
       <Image
         className="rounded w-full object-cover aspect-video mt-3"
-        src={!data.logo.startsWith("https") ? `http://localhost:8080/logos/${data.logo}` : data.logo}
+        src={!data.logo.startsWith("https") ? `${endPoint}/logos/${data.logo}` : data.logo}
         alt="Picture of the band"
         width={1600}
         height={800}

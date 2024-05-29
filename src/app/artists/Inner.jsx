@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { addLikes } from "@/lib/crud";
 import { useState } from "react";
 import HeartRadioBtn from "@/components/HeartRadioBtn";
+import { endPoint } from "@/lib/crud";
 
 export default function Inner({ data, likes }) {
   const [artists, setArtists] = useState(data);
@@ -89,7 +90,7 @@ export default function Inner({ data, likes }) {
               <CardContent>
                 <Image
                   className="rounded w-full object-cover aspect-video"
-                  src={!oneArtist.logo.startsWith("https") ? `http://localhost:8080/logos/${oneArtist.logo}` : oneArtist.logo}
+                  src={!oneArtist.logo.startsWith("https") ? `${endPoint}/logos/${oneArtist.logo}` : "/img/campsite.png"}
                   height={100}
                   width={100}
                   alt="logo of the artist"
