@@ -13,6 +13,7 @@ export async function getLikes(parm) {
 
   const getUser = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/users?name=eq." + parm, {
     headers: headersList,
+    cache: "no-store",
   });
 
   const userData = await getUser.json();
@@ -20,6 +21,7 @@ export async function getLikes(parm) {
 
   const response = await fetch("https://lwvdzfdgkmziuewtursm.supabase.co/rest/v1/users_liked?userid=eq." + userId, {
     headers: headersList,
+    cache: "no-store",
   });
 
   const likes = await response.json();
@@ -43,6 +45,7 @@ export async function addLikes(parm, userId) {
     method: "PATCH",
     body: bodyContent,
     headers: headersList,
+    cache: "no-store",
   });
 }
 
