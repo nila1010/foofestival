@@ -14,6 +14,7 @@ export default function Inner({ data, likes }) {
   const [artists, setArtists] = useState(data);
   const [filteredArtists, setFilteredArtists] = useState("");
   const [userLiked, setUserLiked] = useState(likes);
+  console.log(userLiked);
 
   function setLike(parm) {
     setUserLiked((old) => {
