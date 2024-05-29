@@ -7,7 +7,7 @@ import { endPoint } from "@/lib/crud";
 
 export default async function PlayingNext() {
   const date = new Date();
-  const hour = date.getHours();
+  const hour = date.getHours() + 1;
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];

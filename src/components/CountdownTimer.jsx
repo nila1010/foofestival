@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 export default function CountdownTimer({ setTimeOut }) {
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(300);
 
   const displaySeconds = seconds % 60;
   const displayMinutes = Math.floor(seconds / 60);
