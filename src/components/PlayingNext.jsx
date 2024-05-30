@@ -22,10 +22,10 @@ export default async function PlayingNext() {
       }
     } else {
       if (modifiedHour <= 9) {
-        const newHour = modifiedHour - 1;
+        const newHour = modifiedHour;
         return `0${newHour}:00`;
       } else {
-        const newHour = modifiedHour - 1;
+        const newHour = modifiedHour;
         return `${newHour}:00`;
       }
     }
