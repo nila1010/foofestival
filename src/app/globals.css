@@ -3,27 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  /*  body {
+  body {
     background: rgb(53, 2, 61);
     background: radial-gradient(circle, rgba(53, 2, 61, 1) 0%, rgba(72, 9, 121, 1) 45%, rgba(148, 0, 255, 1) 100%);
-  } */
-  .pulseanimation {
-    animation-name: animatebg;
-    animation-duration: 25s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
   }
-  @keyframes animatebg {
-    0% {
-      transform: scaleX(1);
-    }
-    50% {
-      transform: scaleX(2);
-    }
-    100% {
-      transform: scaleX(1);
-    }
-  }
+
   :root {
     /*FONTSIZE*/
     --step--1: clamp(0.8rem, 0.7403rem + 0.2548cqi, 0.9377rem);
@@ -120,6 +104,17 @@
     @apply bg-background text-foreground;
   }
 }
+.change {
+  view-transition-name: mainview;
+}
+
+::view-transition-old(mainview) {
+  animation: 400ms cubic-bezier(0.4, 0, 1, 1) both scaleout;
+}
+
+::view-transition-new(mainview) {
+  animation: 410ms cubic-bezier(0, 0, 0.2, 1) both scalein;
+}
 
 @keyframes scaleout {
   to {
@@ -137,18 +132,6 @@
     transform: scale(1);
     opacity: 1;
   }
-}
-
-.change {
-  view-transition-name: mainview;
-}
-
-::view-transition-old(mainview) {
-  animation: 400ms cubic-bezier(0.4, 0, 1, 1) both scaleout;
-}
-
-::view-transition-new(mainview) {
-  animation: 410ms cubic-bezier(0, 0, 0.2, 1) both scalein;
 }
 
 .fade-in {

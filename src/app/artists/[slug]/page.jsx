@@ -42,6 +42,7 @@ export default async function OneBand({ params }) {
   };
 
   if (!data) return NotFound();
+  console.log(data.cr);
 
   return (
     <section>
@@ -69,6 +70,7 @@ export default async function OneBand({ params }) {
         width={1600}
         height={800}
       />
+      <p className="text-[10px]">Credit:{data.credit}</p>
       <div className="max-w-prose mt-5">
         <Heading
           as="h2"

@@ -15,13 +15,13 @@ export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={`${glory.className} font-light text-md text-textprim bg-transparent `}>
-          <header className="fixed right-0 h-[48px] z-10 lg:py-10 pr-5 sm:order-1 lg:h-[100svh]">
+        <body className={`${glory.className}relative max-w-[1600px] mx-auto font-light text-md text-textprim bg-transparent`}>
+          <header className="absolute right-0 lg:fixed top-0 lg:right-0 h-[48px] z-10 lg:py-10 pr-5 sm:order-1 lg:h-[100svh]">
             <Navigation />
           </header>
           <aside className="z-10 sm:fixed p-3 hidden sm:grid pt-10 max-h-[100svh] gap-14">
             <p className="font-bold text-xl md:text-2xl lg:text-3xl [writing-mode:vertical-lr] mx-auto">FooFestival</p>
-            <p className=" font-semibold text-lg [writing-mode:vertical-lr] mx-auto">All year festival</p>{" "}
+            <p className=" font-semibold text-lg [writing-mode:vertical-lr] mx-auto">All year festival</p>
             <Image
               className="mx-auto"
               src="/logo/logowhite.svg"
@@ -29,16 +29,7 @@ export default function RootLayout({ children }) {
               height={200}
               alt="festival logo"></Image>
           </aside>
-          <main className="relative z-0 grid h-[100svh] overflow-y-auto overflow-x-hidden">
-            <Image
-              src="/bggradient.svg"
-              width={2620}
-              height={1080}
-              alt="bagground image"
-              className="row-start-1 col-start-1 object-cover self-stretch pulseanimation"
-            />
-            <div className="change row-start-1 col-start-1 p-5 lg:py-10 mt-16 lg:mt-0 sm:pl-[135px] lg:pr-64 z-10">{children}</div>
-          </main>
+          <main className="change relative h-[100svh] p-5 lg:py-10 mt-14 sm:mt-16 lg:mt-0 sm:pl-[135px] lg:pr-64">{children}</main>
 
           <footer></footer>
         </body>

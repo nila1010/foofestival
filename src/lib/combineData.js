@@ -16,6 +16,7 @@ export default async function combinedData() {
           act.members = matched.members;
           act.genre = matched.genre;
           act.slug = matched.slug;
+          act.credit = matched.logoCredits;
         }
       });
     }
