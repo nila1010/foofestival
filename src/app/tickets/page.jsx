@@ -9,7 +9,7 @@ import SummeryAside from "@/components/SummeryAside";
 import TicketCard from "@/components/TicketCard";
 import TimeOut from "@/components/TimeOut";
 import { getSpots } from "@/lib/crud";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 export default function Ticket() {
   const [regTickets, setRegTickets] = useState(0);
@@ -124,75 +124,77 @@ export default function Ticket() {
                     Accomidation
                   </Heading>
                   <p>Choose a campesite</p>
-                  {availableSpots && (
-                    <div className="flex gap-5 flex-wrap justify-center sm:justify-start mt-5">
-                      {availableSpots[0].available >= totalTickets && (
-                        <CampsiteCard
-                          imgPath="/img/campsite.png"
-                          setBookingInfo={setBookingInfo}
-                          setPage={setPage}
-                          setResId={setResId}
-                          numOfTickets={totalTickets}
-                          setCampSitePick={setCampSitePick}
-                          title="Svartheim"
-                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                          spots={availableSpots[0].available}
-                        />
-                      )}
-                      {availableSpots[1].available >= totalTickets && (
-                        <CampsiteCard
-                          imgPath="/img/campsite2.png"
-                          setBookingInfo={setBookingInfo}
-                          setPage={setPage}
-                          setResId={setResId}
-                          numOfTickets={totalTickets}
-                          setCampSitePick={setCampSitePick}
-                          title="Nilfheim"
-                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                          spots={availableSpots[1].available}
-                        />
-                      )}
-                      {availableSpots[2].available >= totalTickets && (
-                        <CampsiteCard
-                          imgPath="/img/campsite3.png"
-                          setBookingInfo={setBookingInfo}
-                          setPage={setPage}
-                          setResId={setResId}
-                          numOfTickets={totalTickets}
-                          setCampSitePick={setCampSitePick}
-                          title="Helheim"
-                          description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
-                          spots={availableSpots[2].available}
-                        />
-                      )}
-                      {availableSpots[3].available >= totalTickets && (
-                        <CampsiteCard
-                          imgPath="/img/campsite4.png"
-                          setBookingInfo={setBookingInfo}
-                          setPage={setPage}
-                          setResId={setResId}
-                          numOfTickets={totalTickets}
-                          setCampSitePick={setCampSitePick}
-                          title="Muspelheim"
-                          description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty."
-                          spots={availableSpots[3].available}
-                        />
-                      )}
-                      {availableSpots[4].available >= totalTickets && (
-                        <CampsiteCard
-                          imgPath="/img/campsite2.png"
-                          setBookingInfo={setBookingInfo}
-                          setPage={setPage}
-                          setResId={setResId}
-                          numOfTickets={totalTickets}
-                          setCampSitePick={setCampSitePick}
-                          title="Alfheim"
-                          description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner."
-                          spots={availableSpots[4].available}
-                        />
-                      )}
-                    </div>
-                  )}
+                  <Suspense fallback={<p>Loading campsites....</p>}>
+                    {availableSpots && (
+                      <div className="flex gap-5 flex-wrap justify-center sm:justify-start mt-5">
+                        {availableSpots[0].available >= totalTickets && (
+                          <CampsiteCard
+                            imgPath="/img/campsite.png"
+                            setBookingInfo={setBookingInfo}
+                            setPage={setPage}
+                            setResId={setResId}
+                            numOfTickets={totalTickets}
+                            setCampSitePick={setCampSitePick}
+                            title="Svartheim"
+                            description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                            spots={availableSpots[0].available}
+                          />
+                        )}
+                        {availableSpots[1].available >= totalTickets && (
+                          <CampsiteCard
+                            imgPath="/img/campsite2.png"
+                            setBookingInfo={setBookingInfo}
+                            setPage={setPage}
+                            setResId={setResId}
+                            numOfTickets={totalTickets}
+                            setCampSitePick={setCampSitePick}
+                            title="Nilfheim"
+                            description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                            spots={availableSpots[1].available}
+                          />
+                        )}
+                        {availableSpots[2].available >= totalTickets && (
+                          <CampsiteCard
+                            imgPath="/img/campsite3.png"
+                            setBookingInfo={setBookingInfo}
+                            setPage={setPage}
+                            setResId={setResId}
+                            numOfTickets={totalTickets}
+                            setCampSitePick={setCampSitePick}
+                            title="Helheim"
+                            description="Svartheim offers a tranquil oasis for festival-goers seeking a peaceful retreat."
+                            spots={availableSpots[2].available}
+                          />
+                        )}
+                        {availableSpots[3].available >= totalTickets && (
+                          <CampsiteCard
+                            imgPath="/img/campsite4.png"
+                            setBookingInfo={setBookingInfo}
+                            setPage={setPage}
+                            setResId={setResId}
+                            numOfTickets={totalTickets}
+                            setCampSitePick={setCampSitePick}
+                            title="Muspelheim"
+                            description="Step into a realm of luxury and comfort at Vanaheim, where every camper is treated like royalty."
+                            spots={availableSpots[3].available}
+                          />
+                        )}
+                        {availableSpots[4].available >= totalTickets && (
+                          <CampsiteCard
+                            imgPath="/img/campsite2.png"
+                            setBookingInfo={setBookingInfo}
+                            setPage={setPage}
+                            setResId={setResId}
+                            numOfTickets={totalTickets}
+                            setCampSitePick={setCampSitePick}
+                            title="Alfheim"
+                            description="Dare to venture into the wild and rugged terrain of Jotunheim, where adventure awaits around every corner."
+                            spots={availableSpots[4].available}
+                          />
+                        )}
+                      </div>
+                    )}
+                  </Suspense>
                 </div>
               )}
               {page === 2 && (
