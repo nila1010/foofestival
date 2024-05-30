@@ -21,10 +21,10 @@ export default async function PlayingNow() {
       }
     } else {
       if (hour <= 9) {
-        const newHour = hour + 1;
+        const newHour = hour;
         return `0${newHour}:00`;
       } else {
-        const newHour = hour + 1;
+        const newHour = hour;
         return `${newHour}:00`;
       }
     }

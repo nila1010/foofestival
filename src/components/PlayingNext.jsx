@@ -14,7 +14,7 @@ export default async function PlayingNext() {
   console.log(hour);
 
   const nextHour = () => {
-    const modifiedHour = hour + 1;
+    const modifiedHour = hour;
     if (modifiedHour % 2 === 0) {
       if (modifiedHour <= 9) {
         return `0${modifiedHour}:00`;
