@@ -11,21 +11,18 @@ export default async function PlayingNext() {
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-
+  const newHour = hour + 4;
   const nextHour = () => {
-    const modifiedHour = hour;
-    if (modifiedHour % 2 === 0) {
-      if (modifiedHour <= 9) {
-        return `0${modifiedHour}:00`;
-      } else {
-        return `${modifiedHour}:00`;
-      }
-    } else {
-      if (modifiedHour <= 9) {
-        const newHour = modifiedHour;
+    if (newHour % 2 === 0) {
+      if (newHour <= 9) {
         return `0${newHour}:00`;
       } else {
-        const newHour = modifiedHour;
+        return `${newHour}:00`;
+      }
+    } else {
+      if (newHour <= 9) {
+        return `0${newHour}:00`;
+      } else {
         return `${newHour}:00`;
       }
     }

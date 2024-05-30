@@ -12,7 +12,7 @@ export default async function PlayingNow() {
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   const newHour = hour + 2;
-  console.log({ newHour });
+
   const liveHour = () => {
     if (newHour % 2 === 0) {
       if (newHour <= 9) {
