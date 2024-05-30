@@ -25,12 +25,12 @@ export default function Home() {
         </Heading>
 
         <ul className="flex flex-wrap gap-x-5 text-center justify-center text-pretty py-5">
-          {data.map((oneArtist, index) => {
+          {data.map((oneArtist, i) => {
             return (
               <ArtistListStyle
                 key={oneArtist.name}
                 oneArtist={oneArtist}
-                i={index}
+                i={i}
               />
             );
           })}
