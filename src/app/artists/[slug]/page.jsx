@@ -42,7 +42,6 @@ export default async function OneBand({ params }) {
   };
 
   if (!data) return NotFound();
-  console.log(data.cr);
 
   return (
     <section>
