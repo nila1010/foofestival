@@ -2,7 +2,7 @@ import Heading from "./Headings";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export default function TicketCard({ title, price, description, label, inputId, setRegTickets, setVipTickets, setPage, setBookingInfo }) {
   const [selectedTickets, setSelectedTickets] = useState();
@@ -11,7 +11,7 @@ export default function TicketCard({ title, price, description, label, inputId, 
   function setValue(e) {
     e.preventDefault();
 
-    if (!selectedTickets) {
+    if (!selectedTickets || selectedTickets <= 0) {
       setError(true);
     } else {
       setPage(1);
