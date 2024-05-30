@@ -90,7 +90,7 @@ export default function Inner({ data, likes }) {
               <CardContent>
                 <Image
                   className="rounded w-full object-cover aspect-video"
-                  src={!oneArtist.logo.startsWith("https") ? `${endPoint}/logos/${oneArtist.logo}` : "/img/campsite.png"}
+                  src={!oneArtist.logo.startsWith("https") ? `${endPoint}/logos/${oneArtist.logo}` : oneArtist.logo}
                   height={100}
                   width={100}
                   alt="logo of the artist"

@@ -10,7 +10,12 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
 
   useEffect(() => {
     setTotalTickets(() => {
-      const sumTotal = vipTickets + regTickets;
+      let sumTotal;
+      if (regTickets === 0) {
+        sumTotal = vipTickets;
+      } else {
+        sumTotal = regTickets;
+      }
       const newArray = [];
 
       for (let i = newArray.length; i < sumTotal; i++) {

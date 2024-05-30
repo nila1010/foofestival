@@ -20,7 +20,8 @@ export default function CountdownTimer({ setTimeOut }) {
 
   return (
     <p className="text-bold text-lg text-bgprim">
-      Time to complete {displayMinutes}:{displaySeconds}
+      Time to complete 0{displayMinutes}:{displaySeconds < 10 ? "0" : ""}
+      {displaySeconds}
     </p>
   );
 }

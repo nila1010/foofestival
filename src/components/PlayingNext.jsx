@@ -11,9 +11,10 @@ export default async function PlayingNext() {
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  console.log(hour);
 
   const nextHour = () => {
-    const modifiedHour = hour + 2;
+    const modifiedHour = hour + 1;
     if (modifiedHour % 2 === 0) {
       if (modifiedHour <= 9) {
         return `0${modifiedHour}:00`;
@@ -46,7 +47,7 @@ export default async function PlayingNext() {
       className="flex gap-5 flex-wrap justify-center mt-5">
       {data.length === 0 ? (
         <div className="grid place-items-center">
-          <p>Noone is playing next, so its beer time</p>
+          <p>No one is playing next, so it is beer time</p>
           <Image
             src="/beer.svg"
             alt="logo of a beer"

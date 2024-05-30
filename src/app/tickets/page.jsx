@@ -204,7 +204,7 @@ export default function Ticket() {
                     size="2xl">
                     Choose tents
                   </Heading>
-                  <p className="mb-5">Numbers of tent must match tickets purchased</p>
+                  <p className="mb-5">Numbers of tents must match tickets purchased</p>
                   <ChooseTents
                     setBookingInfo={setBookingInfo}
                     setPage={setPage}
@@ -269,6 +269,7 @@ export default function Ticket() {
       {page === 6 && (
         <div className={page === 1 ? "fade-in" : ""}>
           <ConfirmationTicket
+            resId={resId}
             btnLink="/program"
             btnText="See program"
             btnLink2="/artists"

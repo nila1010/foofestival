@@ -1,16 +1,17 @@
 import { Link } from "next-view-transitions";
 import Heading from "./Headings";
 import { buttonVariants } from "@/components/ui/button";
-export default function ConfirmationTicket({ btnLink, btnText, btnLink2, btnText2 }) {
+export default function ConfirmationTicket({ btnLink, btnText, btnLink2, btnText2, resId }) {
   return (
-    <article className="grid justify-center gap-5 mt-10">
+    <article className="grid justify-center gap-5 mt-10 max-w-[65ch] mx-auto">
       <Heading
         as="h1"
         size="xl"
         customClass="max-w-[30ch] text-center mx-auto">
         Perfect, Your booking has been confirmed, and we are looking forward to see you
       </Heading>
-      <p className="text-center">An confirmation email has been sent to your email, with practical information</p>
+      <p className="text-center">A confirmation email has been sent to your email, with practical information</p>
+      <p className="text-center -mt-4">Your resevation number is: {resId.id}</p>
       <Heading
         as="h2"
         size="xl"

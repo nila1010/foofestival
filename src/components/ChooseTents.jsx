@@ -13,32 +13,13 @@ export default function ChooseTents({ regTickets, vipTickets, setTents, setPage,
 
   useEffect(() => {
     setTotalTents(() => {
-      const total = twoTent * 2 + threeTent * 3;
+      const total = twoTent * 1 + threeTent * 1;
       return total;
     });
   }, [twoTent, threeTent]);
 
   useEffect(() => {
-    /*  if (totalTents > 0) {
-      if (3 % totalTents === 0) {
-        setDisThree(false);
-      } else {
-        setDisThree(true);
-      }
-      if (2 % totalTents === 0) {
-        setDisAll(false);
-      } else {
-        setDisAll(true);
-      }
-    } */
-
-    if (totalTents === totalTickets - 1) {
-      setDisThree(true);
-    } else {
-      setDisThree(false);
-    }
-
-    if (totalTents === totalTickets + 1 || totalTents === totalTickets) {
+    if (totalTents === totalTickets) {
       setDisAll(true);
     } else {
       setDisAll(false);

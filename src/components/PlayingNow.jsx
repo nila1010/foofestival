@@ -11,7 +11,6 @@ export default async function PlayingNow() {
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-  console.log(hour);
 
   const liveHour = () => {
     if (hour % 2 === 0) {
@@ -46,7 +45,7 @@ export default async function PlayingNow() {
       className="flex gap-5 flex-wrap justify-center mt-10">
       {data.length === 0 ? (
         <div className="grid place-items-center">
-          <p>Noone is playing at the moment, so its beer time</p>
+          <p>No one is playing at the moment, so it is beer time</p>
           <Image
             src="/beer.svg"
             alt="logo of a beer"
