@@ -84,25 +84,25 @@ export default function Loading() {
         <div className="overflow-auto">
           <div className="grid grid-cols-4 gap-10">
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
@@ -119,25 +119,25 @@ export default function Loading() {
         <div className="overflow-auto">
           <div className="grid grid-cols-4 gap-10">
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
@@ -154,25 +154,25 @@ export default function Loading() {
         <div className="overflow-auto">
           <div className="grid grid-cols-4 gap-10">
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.5}
             />
             <Skeleton
-              className="h-40"
+              className="h-20 sm:h-40"
               baseColor="oklch(37.896% 0.1009 290.58 / 0.501)"
               highlightColor="oklch(93.114% 0.19848 123.3)"
               duration={2.7}
