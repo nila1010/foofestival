@@ -11,7 +11,6 @@ export default async function PlayingNext() {
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-  console.log(hour);
 
   const nextHour = () => {
     const modifiedHour = hour;
