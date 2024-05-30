@@ -1,5 +1,5 @@
-export const endPoint = "http://localhost:8080";
-/* export const endPoint = "https://water-efficacious-volleyball.glitch.me"; */
+/* export const endPoint = "http://localhost:8080"; */
+export const endPoint = "https://water-efficacious-volleyball.glitch.me";
 
 export async function getData(parm) {
   const res = await fetch(endPoint + "/" + parm);
