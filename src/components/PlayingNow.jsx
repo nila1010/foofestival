@@ -11,20 +11,19 @@ export default async function PlayingNow() {
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-  console.log(hour);
+  const newHour = hour + 2;
+  console.log({ newHour });
   const liveHour = () => {
-    if (hour % 2 === 0) {
-      if (hour <= 9) {
-        return `0${hour}:00`;
-      } else {
-        return `${hour}:00`;
-      }
-    } else {
-      if (hour <= 9) {
-        const newHour = hour;
+    if (newHour % 2 === 0) {
+      if (newHour <= 9) {
         return `0${newHour}:00`;
       } else {
-        const newHour = hour;
+        return `${newHour}:00`;
+      }
+    } else {
+      if (newHour <= 9) {
+        return `0${newHour}:00`;
+      } else {
         return `${newHour}:00`;
       }
     }
