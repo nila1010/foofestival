@@ -37,10 +37,15 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
       makeReservation();
     }
   }, [reservate]);
+
+  async function handleForm(e) {
+    e.preventDefault();
+    setReservate(true);
+  }
   return (
     <div>
-      <div className="flex gap-x-10 items-end flex-wrap">
-        <div className="grid justify-start mt-5">
+      <div className="flex gap-x-10 items-center flex-wrap">
+        <div className="grid mt-5">
           <Cards
             number={state.number}
             expiry={state.expiry}
@@ -49,7 +54,9 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
             focused={state.focus}
           />
         </div>
-        <form className="mt-5">
+        <form
+          className="mt-5"
+          onSubmit={handleForm}>
           <Label htmlFor="form_name">Cardholder name</Label>
           <Input
             id="form_name"
@@ -60,7 +67,11 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
             value={state.name}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
+            aria-errormessage="errname"
+            minLength="4"
+            pattern=".*\s+.*"
           />
+          <p className="errndata error text-red-500">You need to enter full name</p>
           <div className="flex gap-5">
             <div>
               <Label htmlFor="form_cardnumber">Card number</Label>
@@ -73,7 +84,13 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
                 value={state.number}
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
+                minLength="16"
+                maxLength="16"
+                pattern="^\d+$"
+                required
+                aria-errormessage="errnumber"
               />
+              <p className="errnumber error text-red-500">Only numbers 16 needed</p>
             </div>
             <div>
               <Label htmlFor="form_expire">Expire date</Label>
@@ -86,7 +103,13 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
                 value={state.expiry}
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
+                minLength="4"
+                maxLength="4"
+                pattern="^\d+$"
+                required
+                aria-errormessage="errdata"
               />
+              <p className="errndata error text-red-500">Only numbers 4 needed</p>
             </div>
           </div>
           <Label htmlFor="form_cvc">CVC</Label>
@@ -99,18 +122,21 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
             value={state.cvc}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
+            minLength="3"
+            maxLength="3"
+            pattern="^\d+$"
+            required
+            aria-errormessage="errcvc"
           />
+          <p className="errncvc error text-red-500">Only numbers 3 needed</p>
+          <Button
+            variant="defaultline"
+            size="lg"
+            className="w-fit mt-10">
+            Confirm booking
+          </Button>
         </form>
       </div>
-      <Button
-        onClick={() => {
-          setReservate(true);
-        }}
-        variant="defaultline"
-        size="lg"
-        className="w-fit mt-10">
-        Confirm booking
-      </Button>
     </div>
   );
 }
