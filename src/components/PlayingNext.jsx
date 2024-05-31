@@ -40,7 +40,7 @@ export default async function PlayingNext() {
   return (
     <section
       id="playingnow"
-      className="flex gap-5 flex-wrap justify-center mt-5">
+      className="flex gap-5 flex-wrap justify-center mt-5 mb-20">
       {data.length === 0 ? (
         <div className="grid place-items-center">
           <p>No one is playing next, so it is beer time</p>

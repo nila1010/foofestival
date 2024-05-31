@@ -108,7 +108,7 @@ export default function Inner({ data }) {
         customClass="justify-self-center py-5">
         {fullDay}
       </Heading>
-      <article className="grid grid-cols-1">
+      <article className="grid grid-cols-1 mb-20">
         <Heading
           as="h3"
           size="xl">
