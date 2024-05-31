@@ -117,10 +117,10 @@ export default function Inner({ data }) {
         <Separator />
         <div className="overflow-auto">
           <div className="flex">
-            {midgard.map((act) => {
+            {midgard.map((act, i) => {
               return (
                 <CardProgram
-                  key={act.logo}
+                  key={i}
                   band={act}
                 />
               );
@@ -136,10 +136,10 @@ export default function Inner({ data }) {
         <Separator />
         <div className="overflow-auto">
           <div className="flex">
-            {vanaheim.map((act) => {
+            {vanaheim.map((act, i) => {
               return (
                 <CardProgram
-                  key={act.logo}
+                  key={i}
                   band={act}
                 />
               );
@@ -155,10 +155,10 @@ export default function Inner({ data }) {
         <Separator />
         <div className="overflow-auto">
           <div className="flex">
-            {jotunheim.map((act) => {
+            {jotunheim.map((act, i) => {
               return (
                 <CardProgram
-                  key={act.logo}
+                  key={i}
                   band={act}
                 />
               );

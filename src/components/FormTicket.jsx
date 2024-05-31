@@ -46,7 +46,7 @@ export default function FormTicket({ vipTickets, regTickets, setInfo, setPage, s
     setBookingInfo((o) => {
       return { ...o, userid: info.userid };
     });
-    /* await addBooking(info); */
+    await addBooking(info);
     setInfo(info);
   }
   return (

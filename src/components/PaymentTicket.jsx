@@ -27,8 +27,8 @@ export default function PaymentTicket({ setPage, bookingInfo, resId }) {
   };
 
   async function makeReservation() {
-    /*  await setReservation(resId); */
-    /*   await addReservation(bookingInfo); */
+    await setReservation(resId);
+    await addReservation(bookingInfo);
   }
 
   useEffect(() => {

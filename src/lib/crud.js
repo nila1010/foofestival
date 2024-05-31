@@ -95,14 +95,6 @@ export async function addBooking(info) {
     headers: headersList,
   });
 
-  /*   if (!response.ok) {
-    // Log the status and full response for debugging
-    console.error(`Error: ${response.status}`);
-    const errorDetails = await response.json();
-    console.error("Error details:", errorDetails);
-    throw new Error("Failed to add booking"); */
-  /*   } */
-
   let data = await response.json();
 
   return data;
@@ -137,14 +129,6 @@ export async function addReservation(info) {
     body: bodyContent,
     headers: headersList,
   });
-
-  /*   if (!response.ok) {
-    // Log the status and full response for debugging
-    console.error(`Error: ${response.status}`);
-    const errorDetails = await response.json();
-    console.error("Error details:", errorDetails);
-    throw new Error("Failed to add booking");
-  } */
 
   let data = await response.json();
 

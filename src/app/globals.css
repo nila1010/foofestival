@@ -167,7 +167,6 @@
     .program-card-scroll {
       animation: reveal ease-in-out both;
       animation-timeline: view(inline);
-      /*   animation-range: cover 0% cover 40%; */
     }
 
     @keyframes reveal {

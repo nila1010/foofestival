@@ -9,7 +9,7 @@ import SummeryAside from "@/components/SummeryAside";
 import TicketCard from "@/components/TicketCard";
 import TimeOut from "@/components/TimeOut";
 import { getSpots } from "@/lib/crud";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 
 export default function Inner({ spots }) {
   const [regTickets, setRegTickets] = useState(0);
@@ -70,12 +70,6 @@ export default function Inner({ spots }) {
       return newPrice;
     });
   }, [regTickets, vipTickets, greenOpt, tents]);
-
-  useEffect(() => {
-    if (resId) {
-      console.log("Set Timer");
-    }
-  }, [resId]);
 
   return (
     <section>

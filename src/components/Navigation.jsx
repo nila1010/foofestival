@@ -1,8 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
 import { Link } from "next-view-transitions";
 import Burger from "./Burger";
-import { redirect } from "next/navigation";
+
 export default function Navigation() {
   return (
     <section className="flex justify-between items-center sm:py-2">

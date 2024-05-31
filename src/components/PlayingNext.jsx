@@ -7,7 +7,7 @@ import { endPoint } from "@/lib/crud";
 
 export default async function PlayingNext() {
   const date = new Date();
-  const hour = date.getHours() + 1;
+  const hour = date.getHours();
   const liveDay = date.getDay();
 
   const dayNamesShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -55,7 +55,7 @@ export default async function PlayingNext() {
         data.map((one) => {
           return (
             <Card
-              key={one.act}
+              key={one.start}
               className="min-w-[250px] gap-10">
               <CardHeader>
                 <CardTitle>{one.act}</CardTitle>

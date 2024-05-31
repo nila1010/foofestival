@@ -34,7 +34,7 @@ export default function ArtistListStyle({ oneArtist, i }) {
           />
         )}
       </li>
-      {(i === 10 || i === 19) && <div style={{ height: "1.5rem", width: "100%" }} />}
+      {(i === 10 || i === 19) && <li style={{ height: "1.5rem", width: "100%" }} />}
     </>
   );
 }

@@ -56,7 +56,7 @@ export default async function PlayingNow() {
         data.map((one) => {
           return (
             <Card
-              key={one.act}
+              key={one.start}
               className="min-w-[250px] gap-10">
               <CardHeader>
                 <CardTitle>{one.act}</CardTitle>
